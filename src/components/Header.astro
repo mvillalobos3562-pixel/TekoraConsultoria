@@ -1,0 +1,56 @@
+---
+export interface Props {
+  hideContactCTA?: boolean;
+}
+const { hideContactCTA = false } = Astro.props;
+---
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+        <polygon points="12,3 21,20 3,20" fill="none" stroke="var(--text)" stroke-width="1.4"></polygon>
+        <line x1="12" y1="3" x2="12" y2="20" stroke="var(--costos)" stroke-width="1.4"></line>
+      </svg>
+      <span>Prisma Consulting</span>
+    </a>
+    <nav>
+      <a href="/costos">Costos</a>
+      <a href="/inventarios">Inventarios</a>
+      <a href="/recursos">Recursos</a>
+    </nav>
+    {!hideContactCTA && (
+      <a href="mailto:mvillalobos356@gmail.com?subject=Consulta%20general" class="btn btn-neutral header-cta">Contactar</a>
+    )}
+  </div>
+</header>
+
+<style>
+  .site-header {
+    border-bottom: 1px solid var(--border);
+    padding: 18px 0;
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--text);
+  }
+  nav { display: flex; gap: 22px; flex-wrap: wrap; }
+  nav a {
+    text-decoration: none;
+    font-size: 15px;
+    color: var(--text);
+  }
+  nav a:hover { color: var(--costos); }
+  .header-cta { padding: .55rem 1.1rem; font-size: 14px; }
+</style>

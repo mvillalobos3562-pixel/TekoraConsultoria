@@ -1,0 +1,142 @@
+:root {
+  --text: #22262B;
+  --text-muted: #5B6169;
+  --bg: #FFFFFF;
+  --bg-soft: #F4F5F6;
+  --border: #E2E4E7;
+
+  --costos: #0F6E56;
+  --costos-soft: #E7F2EF;
+  --inventarios: #8C4A32;
+  --inventarios-soft: #F1E6E0;
+
+  --font-sans: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  --radius: 8px;
+  --max-width: 1080px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; }
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+h1, h2, h3 { font-weight: 600; line-height: 1.2; margin: 0; }
+h1 { font-size: clamp(32px, 5vw, 44px); letter-spacing: -0.01em; }
+h2 { font-size: clamp(24px, 3.5vw, 30px); }
+h3 { font-size: 20px; }
+p { margin: 0 0 1rem; font-size: 17px; }
+.text-muted { color: var(--text-muted); }
+.text-small { font-size: 14px; color: var(--text-muted); }
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin: 0 0 12px;
+}
+.eyebrow.costos { color: var(--costos); }
+.eyebrow.inventarios { color: var(--inventarios); }
+
+/* Botones */
+.btn {
+  display: inline-block;
+  padding: .85rem 1.5rem;
+  border-radius: var(--radius);
+  font-weight: 500;
+  font-size: 15px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-sans);
+}
+.btn-costos { background: var(--costos); color: #fff; }
+.btn-inventarios { background: var(--inventarios); color: #fff; }
+.btn-neutral { background: var(--text); color: #fff; }
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+.cta-group {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Divisor "firma" — la luz de Prisma separándose en los dos acentos */
+.prism-rule {
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--costos) 0%, var(--text) 50%, var(--inventarios) 100%);
+  margin: 56px 0;
+  border: none;
+}
+
+/* Bloques de sección */
+section { padding: 64px 0; }
+.section-soft { background: var(--bg-soft); }
+
+.hero-block {
+  border-radius: 14px;
+  padding: 40px;
+}
+.hero-block.costos { background: var(--costos-soft); }
+.hero-block.inventarios { background: var(--inventarios-soft); }
+.hero-block h1 { margin-bottom: 16px; }
+.hero-block p { max-width: 56ch; }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+.card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+
+.faq-item { border-bottom: 1px solid var(--border); padding: 18px 0; }
+.faq-item:last-child { border-bottom: none; }
+.faq-item p.q { font-weight: 600; margin: 0 0 6px; font-size: 16px; }
+.faq-item p.a { margin: 0; color: var(--text-muted); font-size: 15px; }
+
+/* Formulario */
+label { display: block; font-size: 14px; font-weight: 500; margin-bottom: 6px; }
+input, select, textarea {
+  width: 100%;
+  padding: .7rem .9rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  margin-bottom: 18px;
+  background: var(--bg);
+  color: var(--text);
+}
+textarea { min-height: 120px; resize: vertical; }
+
+@media (max-width: 640px) {
+  section { padding: 48px 0; }
+  .hero-block { padding: 28px; }
+}

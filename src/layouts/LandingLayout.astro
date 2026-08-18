@@ -1,0 +1,51 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  description: string;
+}
+const { title, description } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title} · Prisma Consulting</title>
+  <meta name="description" content={description} />
+  <!-- Sin index: estas páginas existen solo como destino de campañas pagas -->
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+  <main>
+    <div class="container" style="padding-top: 32px;">
+      <a href="/" class="logo-lp">
+        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+          <polygon points="12,3 21,20 3,20" fill="none" stroke="var(--text)" stroke-width="1.4"></polygon>
+          <line x1="12" y1="3" x2="12" y2="20" stroke="var(--costos)" stroke-width="1.4"></line>
+        </svg>
+        <span>Prisma Consulting</span>
+      </a>
+    </div>
+    <slot />
+  </main>
+</body>
+</html>
+
+<style>
+  .logo-lp {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--text);
+    width: fit-content;
+  }
+</style>

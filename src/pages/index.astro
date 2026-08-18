@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Inicio"
+  description="Prisma — Consultores en Operaciones. Costos e inventarios, con datos, no a ciegas."
+>
+  <section>
+    <div class="container position-grid">
+      <div>
+        <h1>Prisma — Consultores en Operaciones.</h1>
+        <p class="text-muted" style="font-size: 19px; margin-top: 20px; max-width: 52ch;">
+          Cuando las decisiones operativas se toman sin datos confiables, el costo no siempre se nota de inmediato — pero se acumula. Ayudamos a que su empresa opere con información en la que puede confiar, no con suposiciones.
+        </p>
+      </div>
+      <!-- Ilustración provisional: geométrica/abstracta, alineada a la paleta de marca.
+           Pendiente de reemplazo cuando se defina el estilo de imágenes del sitio. -->
+      <svg viewBox="0 0 320 320" class="position-art" aria-hidden="true">
+        <polygon points="160,40 280,270 40,270" fill="none" stroke="var(--text)" stroke-width="1.5" opacity="0.5"></polygon>
+        <line x1="160" y1="40" x2="160" y2="270" stroke="var(--costos)" stroke-width="1.5"></line>
+        <line x1="160" y1="130" x2="280" y2="270" stroke="var(--inventarios)" stroke-width="1.5"></line>
+        <circle cx="160" cy="130" r="4" fill="var(--text)"></circle>
+      </svg>
+    </div>
+  </section>
+
+  <section class="section-soft">
+    <div class="container">
+      <h2>Problemas que resolvemos</h2>
+      <p class="text-muted" style="max-width: 60ch; margin-top: 8px;">
+        Dos líneas de trabajo hoy — el mismo criterio operativo detrás de ambas.
+      </p>
+      <div class="card-grid" style="margin-top: 28px;">
+        <div class="card">
+          <p class="eyebrow costos">Costos</p>
+          <h3>El tipo de cambio se mueve y su estructura de costos no se entera a tiempo.</h3>
+          <p><a href="/costos">Conocer más →</a></p>
+        </div>
+        <div class="card">
+          <p class="eyebrow inventarios">Inventarios</p>
+          <h3>Lo que dice el sistema y lo que hay en bodega no coinciden.</h3>
+          <p><a href="/inventarios">Conocer más →</a></p>
+        </div>
+      </div>
+      <div style="margin-top: 32px;">
+        <a href="mailto:mvillalobos356@gmail.com?subject=Consulta%20general" class="btn btn-neutral">Contactar</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .position-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .position-art { width: 100%; max-width: 320px; justify-self: center; }
+  @media (max-width: 780px) {
+    .position-grid { grid-template-columns: 1fr; }
+    .position-art { max-width: 220px; order: -1; }
+  }
+</style>

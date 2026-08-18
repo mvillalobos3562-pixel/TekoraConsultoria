@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+const relatedHref = post.data.relatedLine === 'costos' ? '/costos' : '/inventarios';
+const relatedLabel = post.data.relatedLine === 'costos' ? 'Costos' : 'Inventarios';
+---
+<BaseLayout title={post.data.title} description={post.data.summary}>
+  <article>
+    <section>
+      <div class="container" style="max-width: 68ch;">
+        <p class={`eyebrow ${post.data.relatedLine}`}>{relatedLabel}</p>
+        <h1>{post.data.title}</h1>
+      </div>
+    </section>
+
+    <section>
+      <div class="container" style="max-width: 68ch;">
+        <div class="article-body">
+          <Content />
+        </div>
+      </div>
+    </section>
+
+    <section class="section-soft">
+      <div class="container" style="max-width: 68ch;">
+        <p>
+          Si esto describe su empresa, el diagnóstico de {relatedLabel} identifica exactamente dónde se está perdiendo margen hoy.
+        </p>
+        <a href={relatedHref} class={`btn btn-${post.data.relatedLine}`}>Ver diagnóstico de {relatedLabel} →</a>
+      </div>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .article-body :global(p) { margin-bottom: 1.2rem; }
+</style>

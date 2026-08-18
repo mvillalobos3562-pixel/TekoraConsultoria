@@ -1,0 +1,42 @@
+---
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>
+      <p class="footer-brand">Prisma Consulting</p>
+      <p class="text-small">Santa Cruz de la Sierra, Bolivia</p>
+    </div>
+    <nav>
+      <a href="/costos">Costos</a>
+      <a href="/inventarios">Inventarios</a>
+      <a href="/sobre-mi">Sobre mí</a>
+      <a href="/recursos">Recursos</a>
+      <a href="mailto:mvillalobos356@gmail.com?subject=Consulta%20general">Escríbenos</a>
+    </nav>
+    <p class="text-small">&copy; {year} Prisma Consulting.</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 0;
+    margin-top: 40px;
+  }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .footer-brand { font-weight: 500; margin: 0 0 4px; }
+  .footer-inner nav { display: flex; gap: 18px; flex-wrap: wrap; }
+  .footer-inner nav a {
+    text-decoration: none;
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+  .footer-inner nav a:hover { color: var(--text); }
+</style>

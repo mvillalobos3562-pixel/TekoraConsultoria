@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+---
+<BaseLayout
+  title="Recursos"
+  description="Análisis y contexto sobre costos e inventarios en el entorno boliviano."
+>
+  <section>
+    <div class="container">
+      <h1>Análisis y contexto sobre costos e inventarios en el entorno boliviano.</h1>
+    </div>
+  </section>
+
+  <section class="section-soft">
+    <div class="container">
+      <div class="card-grid">
+        {posts.map((post) => (
+          <a href={`/recursos/${post.slug}`} class="card" style="text-decoration:none; color: inherit;">
+            <p class={`eyebrow ${post.data.relatedLine}`}>
+              {post.data.relatedLine === 'costos' ? 'Costos' : 'Inventarios'}
+            </p>
+            <h3>{post.data.title}</h3>
+            <p class="text-muted">{post.data.summary}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
