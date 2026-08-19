@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
+
 export interface Props {
   hideContactCTA?: boolean;
 }
@@ -7,15 +10,11 @@ const { hideContactCTA = false } = Astro.props;
 <header class="site-header">
   <div class="container header-inner">
     <a href="/" class="logo">
-      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-        <polygon points="12,3 21,20 3,20" fill="none" stroke="var(--text)" stroke-width="1.4"></polygon>
-        <line x1="12" y1="3" x2="12" y2="20" stroke="var(--costos)" stroke-width="1.4"></line>
-      </svg>
-      <span>Prisma Consulting</span>
+      <Image src={logo} alt="Prisma Consulting" height={32} />
     </a>
     <nav>
-      <a href="/Soluciones en costos">Costos</a>
-      <a href="/Soluciones en inventarios">Inventarios</a>
+      <a href="/costos">Soluciones en costos</a>
+      <a href="/inventarios">Soluciones en inventarios</a>
       <a href="/recursos">Recursos</a>
     </nav>
     {!hideContactCTA && (
@@ -23,7 +22,6 @@ const { hideContactCTA = false } = Astro.props;
     )}
   </div>
 </header>
-
 <style>
   .site-header {
     border-bottom: 1px solid var(--border);
@@ -39,11 +37,7 @@ const { hideContactCTA = false } = Astro.props;
   .logo {
     display: flex;
     align-items: center;
-    gap: 8px;
     text-decoration: none;
-    font-weight: 500;
-    font-size: 15px;
-    color: var(--text);
   }
   nav { display: flex; gap: 22px; flex-wrap: wrap; }
   nav a {
