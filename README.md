@@ -1,4 +1,4 @@
-# Prisma Consulting — sitio web
+# Tekora Consultoria — sitio web
 
 Sitio construido en [Astro](https://astro.build), salida estática, desplegado en Cloudflare Workers (assets estáticos) conectado a un repositorio de GitHub.
 
