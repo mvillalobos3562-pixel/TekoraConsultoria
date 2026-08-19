@@ -54,8 +54,13 @@ const { hideContactCTA = false } = Astro.props;
       align-items: flex-start;
       gap: 14px;
     }
+    .logo :global(img) {
+      height: 44px;
+      width: auto;
+    }
     nav {
-      gap: 12px 18px;
+      flex-direction: column;
+      gap: 12px;
       width: 100%;
     }
     .header-cta {
