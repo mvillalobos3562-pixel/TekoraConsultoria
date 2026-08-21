@@ -17,25 +17,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </p>
         </div>
 
-        <form class="booking-form" onsubmit="event.preventDefault();">
+        <!-- FORMULARIO DE CAPTURA -->
+        <form id="bookingForm" class="booking-form">
           
           <!-- PASO 1: DATOS DE CONTACTO E IDENTIFICACIÓN -->
           <div class="form-section" style="margin-top: 24px;">
             <label class="field-label">1. Datos de Contacto e Identificación</label>
             <div class="input-group">
-              <input type="text" placeholder="Nombre y Apellido *" required class="form-input" />
+              <input type="text" id="nombre" name="nombre" placeholder="Nombre y Apellido *" required class="form-input" />
             </div>
             <div class="input-group" style="margin-top: 12px;">
-              <input type="text" placeholder="Cargo (Ej. Gerente General, Director de Operaciones) *" required class="form-input" />
+              <input type="text" id="cargo" name="cargo" placeholder="Cargo (Ej. Gerente General, Director de Operaciones) *" required class="form-input" />
             </div>
             <div class="input-group" style="margin-top: 12px;">
-              <input type="text" placeholder="Nombre de la Empresa *" required class="form-input" />
+              <input type="text" id="empresa" name="empresa" placeholder="Nombre de la Empresa *" required class="form-input" />
             </div>
             <div class="input-group" style="margin-top: 12px;">
-              <input type="tel" placeholder="WhatsApp de Contacto *" required class="form-input" />
+              <input type="tel" id="whatsapp" name="whatsapp" placeholder="WhatsApp de Contacto *" required class="form-input" />
             </div>
             <div class="input-group" style="margin-top: 12px;">
-              <input type="email" placeholder="Correo Electrónico (Opcional)" class="form-input" />
+              <input type="email" id="email" name="email" placeholder="Correo Electrónico (Opcional)" class="form-input" />
             </div>
           </div>
 
@@ -100,15 +101,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <div class="form-section" style="margin-top: 24px;">
             <label class="field-label">5. Preferencia de Agenda</label>
             <div class="input-group">
-              <input type="date" class="form-input" required />
+              <input type="date" id="fecha" name="fecha" class="form-input" required />
             </div>
             <div class="card-options grid-2" style="margin-top: 12px;">
               <label class="option-card">
-                <input type="radio" name="horario" value="Manana" checked />
+                <input type="radio" name="horario" value="Mañana (09:00 - 12:00)" checked />
                 <span>Mañana (09:00 - 12:00)</span>
               </label>
               <label class="option-card">
-                <input type="radio" name="horario" value="Tarde" />
+                <input type="radio" name="horario" value="Tarde (14:30 - 18:00)" />
                 <span>Tarde (14:30 - 18:00)</span>
               </label>
             </div>
@@ -116,22 +117,70 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
           <!-- BOTÓN DE CONFIRMACIÓN -->
           <div style="margin-top: 32px;">
-            <button type="submit" class="btn btn-neutral btn-full">
+            <button type="submit" id="submitBtn" class="btn btn-neutral btn-full">
               Enviar solicitud de reunión
             </button>
           </div>
 
-          <!-- MICROCOPY SELECCIONADO (OPCIÓN 2) -->
+          <!-- MICROCOPY DE EXPECTATIVAS -->
           <p class="microcopy-text">
             Agradecemos su interés en evaluar su operación con nosotros. Revisaremos sus datos y nos comunicaremos con usted por WhatsApp o llamada para confirmar la fecha y el horario de su reunión de diagnóstico.
           </p>
 
         </form>
+
+        <!-- MENSAJE DE ÉXITO FORMAL (DESPLEGABLE TRAS ENVÍO) -->
+        <div id="successMessage" class="success-box" style="display: none;">
+          <h2>Solicitud recibida</h2>
+          <p>
+            Agradecemos su tiempo y el detalle de su información. Un consultor de <strong>TEKORA</strong> revisará su perfil operativo y se comunicará vía WhatsApp o llamada telefónica para coordinar la reunión.
+          </p>
+        </div>
+
       </div>
 
     </div>
   </section>
 </BaseLayout>
+
+<!-- SCRIPT DE PROCESAMIENTO Y ENVÍO -->
+<script>
+  // Reemplazar la URL por la endpoint final de Google Apps Script o n8n
+  const WEBHOOK_URL = "https://script.google.com/macros/s/TU_SCRIPT_ID/exec";
+
+  const form = document.getElementById('bookingForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const successBox = document.getElementById('successMessage');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    submitBtn.disabled = true;
+    submitBtn.innerText = "Procesando solicitud...";
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+      });
+
+      form.style.display = 'none';
+      successBox.style.display = 'block';
+
+    } catch (error) {
+      alert("Ocurrió un inconveniente al registrar su solicitud. Por favor, intente nuevamente.");
+      submitBtn.disabled = false;
+      submitBtn.innerText = "Enviar solicitud de reunión";
+    }
+  });
+</script>
 
 <style>
   .booking-card {
@@ -229,8 +278,29 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     margin-top: 16px;
   }
 
+  .success-box {
+    text-align: center;
+    padding: 24px 12px;
+  }
+
+  .success-box h2 {
+    font-size: 22px;
+    color: var(--text, #0f172a);
+    margin-bottom: 12px;
+  }
+
+  .success-box p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-muted, #475569);
+    max-width: 52ch;
+    margin: 0 auto;
+  }
+
   @media (max-width: 600px) {
     .booking-card { padding: 24px 18px; }
     .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
   }
 </style>
+           
+  
