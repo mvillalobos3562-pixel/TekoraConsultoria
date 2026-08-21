@@ -1,0 +1,236 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Agendar Sesión de Diagnóstico"
+  description="Coordine una reunión de relevamiento con PRISMA Consulting para evaluar sus procesos de costos o inventarios."
+>
+  <section class="section-soft" style="padding: 40px 0 60px 0;">
+    <div class="container" style="max-width: 680px;">
+      
+      <div class="booking-card">
+        <div class="booking-header">
+          <p class="eyebrow neutral">PRISMA CONSULTING</p>
+          <h1>Agendar Sesión de Diagnóstico</h1>
+          <p class="text-muted" style="margin-top: 8px;">
+            Complete los siguientes datos para coordinar una reunión de relevamiento y evaluar la situación operativa de su empresa.
+          </p>
+        </div>
+
+        <form class="booking-form" onsubmit="event.preventDefault();">
+          
+          <!-- PASO 1: DATOS DE CONTACTO (Estructura de entrada) -->
+          <div class="form-section">
+            <label class="field-label">1. Datos de Contacto e Identificación</label>
+            <div class="input-group">
+              <input type="text" placeholder="Nombre y Apellido *" required class="form-input" />
+            </div>
+            <div class="input-group" style="margin-top: 12px;">
+              <input type="text" placeholder="Cargo (Ej. Gerente General, Director de Operaciones) *" required class="form-input" />
+            </div>
+            <div class="input-group" style="margin-top: 12px;">
+              <input type="text" placeholder="Nombre de la Empresa *" required class="form-input" />
+            </div>
+            <div class="input-group" style="margin-top: 12px;">
+              <input type="tel" placeholder="WhatsApp de Contacto *" required class="form-input" />
+            </div>
+            <div class="input-group" style="margin-top: 12px;">
+              <input type="email" placeholder="Correo Electrónico (Opcional)" class="form-input" />
+            </div>
+          </div>
+
+          <!-- PASO 2: TIPO DE EMPRESA -->
+          <div class="form-section" style="margin-top: 28px;">
+            <label class="field-label">2. Tipo de Empresa</label>
+            <div class="card-options grid-4">
+              <label class="option-card">
+                <input type="radio" name="tipo_empresa" value="Comercial" checked />
+                <span>Comercial</span>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="tipo_empresa" value="Servicios" />
+                <span>Servicios</span>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="tipo_empresa" value="Producción" />
+                <span>Producción</span>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="tipo_empresa" value="Otro" />
+                <span>Otro</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- PASO 3: SERVICIO DE INTERÉS -->
+          <div class="form-section" style="margin-top: 24px;">
+            <label class="field-label">3. Servicio de Interés</label>
+            <div class="card-options grid-3">
+              <label class="option-card">
+                <input type="radio" name="servicio" value="Costos" checked />
+                <span>Gestión de Costos</span>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="servicio" value="Inventarios" />
+                <span>Control de Inventarios</span>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="servicio" value="Ambos" />
+                <span>Ambos Servicios</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- PASO 4: MODALIDAD -->
+          <div class="form-section" style="margin-top: 24px;">
+            <label class="field-label">4. Modalidad Preferida</label>
+            <div class="card-options grid-2">
+              <label class="option-card">
+                <input type="radio" name="modalidad" value="Virtual" checked />
+                <span>💻 Virtual (Teams / Meet)</span>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="modalidad" value="Presencial" />
+                <span>🏢 Presencial (Santa Cruz)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- PASO 5: PREFERENCIA DE FECHA Y HORARIO -->
+          <div class="form-section" style="margin-top: 24px;">
+            <label class="field-label">5. Preferencia de Agenda</label>
+            <div class="input-group">
+              <input type="date" class="form-input" required />
+            </div>
+            <div class="card-options grid-2" style="margin-top: 12px;">
+              <label class="option-card">
+                <input type="radio" name="horario" value="Manana" checked />
+                <span>Mañana (09:00 - 12:00)</span>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="horario" value="Tarde" />
+                <span>Tarde (14:30 - 18:00)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- BOTÓN DE CONFIRMACIÓN -->
+          <div style="margin-top: 32px;">
+            <button type="submit" class="btn btn-neutral btn-full">
+              Enviar solicitud de reunión
+            </button>
+          </div>
+
+          <!-- MICROCOPY SELECCIONADO (OPCIÓN 2) -->
+          <p class="microcopy-text">
+            Agradecemos su interés en evaluar su operación con nosotros. Revisaremos sus datos y nos comunicaremos con usted por WhatsApp o llamada para confirmar la fecha y el horario de su reunión de diagnóstico.
+          </p>
+
+        </form>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .booking-card {
+    background: #ffffff;
+    border: 1px solid var(--border, #e2e8f0);
+    border-radius: 12px;
+    padding: 36px 32px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  }
+
+  .booking-header h1 {
+    font-size: 26px;
+    line-height: 1.25;
+    margin-top: 6px;
+  }
+
+  .field-label {
+    display: block;
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 10px;
+    color: var(--text, #1e293b);
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--border, #cbd5e1);
+    border-radius: 6px;
+    font-size: 15px;
+    background: #fff;
+    color: var(--text, #0f172a);
+    transition: border-color 0.15s ease;
+  }
+
+  .form-input:focus {
+    outline: none;
+    border-color: var(--text, #0f172a);
+  }
+
+  .card-options {
+    display: grid;
+    gap: 10px;
+  }
+
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+  .option-card {
+    position: relative;
+    border: 1px solid var(--border, #cbd5e1);
+    border-radius: 6px;
+    padding: 12px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+    user-select: none;
+    transition: all 0.15s ease;
+    background: #f8fafc;
+  }
+
+  .option-card input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .option-card:hover {
+    border-color: var(--text, #0f172a);
+    background: #fff;
+  }
+
+  .option-card:has(input:checked) {
+    border-color: var(--text, #0f172a);
+    background: #ffffff;
+    font-weight: 600;
+    box-shadow: 0 0 0 1px var(--text, #0f172a);
+  }
+
+  .btn-full {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .microcopy-text {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text-muted, #64748b);
+    text-align: center;
+    margin-top: 16px;
+  }
+
+  @media (max-width: 600px) {
+    .booking-card { padding: 24px 18px; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  }
+</style>
