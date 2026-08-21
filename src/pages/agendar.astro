@@ -145,14 +145,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <!-- SCRIPT DE PROCESAMIENTO Y ENVÍO -->
 <script>
-  // Reemplazar la URL por la endpoint final de Google Apps Script o n8n
-  const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbzH2rZjdpnfuULxMYG6j4tI1uiO0ufrQZExsUW1gNxoZQdLGcgyNSqG6iL2HDb68I_1/exec";
+  const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbxjQoLsVyDC4w-htRMKz1DAfuwoXnOnk3ZEs_e3h6sJ6Oxtbj0l0dxsNK6tXsg4mgy7/exec";
 
   const form = document.getElementById('bookingForm');
   const submitBtn = document.getElementById('submitBtn');
   const successBox = document.getElementById('successMessage');
 
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener('submit', function (e) {
     e.preventDefault();
     
     submitBtn.disabled = true;
@@ -161,24 +160,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
 
-    try {
-      await fetch(WEBHOOK_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
-      });
-
+    fetch(WEBHOOK_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'text/plain;charset=utf-8',
+      },
+      body: JSON.stringify(data)
+    })
+    .then(() => {
       form.style.display = 'none';
       successBox.style.display = 'block';
-
-    } catch (error) {
+    })
+    .catch((error) => {
       alert("Ocurrió un inconveniente al registrar su solicitud. Por favor, intente nuevamente.");
       submitBtn.disabled = false;
       submitBtn.innerText = "Enviar solicitud de reunión";
-    }
+    });
   });
 </script>
 
@@ -302,5 +300,3 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
   }
 </style>
-           
-  
