@@ -2,25 +2,25 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 <BaseLayout
-  title="Agendar Sesión de Diagnóstico"
-  description="Coordine una reunión de relevamiento con PRISMA Consulting para evaluar sus procesos de costos o inventarios."
+  title="Agendar Reunión de Evaluación"
+  description="Coordine una sesión con TEKORA Consultoría en Operaciones para evaluar sus procesos de costos e inventarios."
 >
   <section class="section-soft" style="padding: 40px 0 60px 0;">
     <div class="container" style="max-width: 680px;">
       
       <div class="booking-card">
         <div class="booking-header">
-          <p class="eyebrow neutral">PRISMA CONSULTING</p>
-          <h1>Agendar Sesión de Diagnóstico</h1>
+          <p class="eyebrow neutral">TEKORA CONSULTORÍA EN OPERACIONES</p>
+          <h1>Agendar reunión de evaluación</h1>
           <p class="text-muted" style="margin-top: 8px;">
-            Complete los siguientes datos para coordinar una reunión de relevamiento y evaluar la situación operativa de su empresa.
+            Para conocer los desafíos donde podemos resolver las inconsistencias de su operación, seleccione sus preferencias:
           </p>
         </div>
 
         <form class="booking-form" onsubmit="event.preventDefault();">
           
-          <!-- PASO 1: DATOS DE CONTACTO (Estructura de entrada) -->
-          <div class="form-section">
+          <!-- PASO 1: DATOS DE CONTACTO E IDENTIFICACIÓN -->
+          <div class="form-section" style="margin-top: 24px;">
             <label class="field-label">1. Datos de Contacto e Identificación</label>
             <div class="input-group">
               <input type="text" placeholder="Nombre y Apellido *" required class="form-input" />
@@ -96,7 +96,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </div>
           </div>
 
-          <!-- PASO 5: PREFERENCIA DE FECHA Y HORARIO -->
+          <!-- PASO 5: PREFERENCIA DE AGENDA -->
           <div class="form-section" style="margin-top: 24px;">
             <label class="field-label">5. Preferencia de Agenda</label>
             <div class="input-group">
