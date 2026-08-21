@@ -12,16 +12,34 @@ const { hideContactCTA = false } = Astro.props;
     <a href="/" class="logo">
       <Image src={logo} alt="Prisma Consulting" height={62} />
     </a>
-    <nav>
-      <a href="/costos">Servicios en costos</a>
-      <a href="/inventarios">Servicios en inventarios</a>
+
+    <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="site-nav">
+      <a href="/costos">Soluciones en costos</a>
+      <a href="/inventarios">Soluciones en inventarios</a>
       <a href="/recursos">Recursos</a>
+      {!hideContactCTA && (
+        <a href="mailto:mvillalobos356@gmail.com?subject=Consulta%20general" class="btn btn-neutral header-cta">Contactar</a>
+      )}
     </nav>
-    {!hideContactCTA && (
-      <a href="mailto:mvillalobos356@gmail.com?subject=Consulta%20general" class="btn btn-neutral header-cta">Contactar</a>
-    )}
   </div>
 </header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const nav = document.getElementById('site-nav');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = nav?.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+</script>
+
 <style>
   .site-header {
     border-bottom: 1px solid var(--border);
@@ -32,14 +50,17 @@ const { hideContactCTA = false } = Astro.props;
     align-items: center;
     justify-content: space-between;
     gap: 24px;
-    flex-wrap: wrap;
   }
   .logo {
     display: flex;
     align-items: center;
     text-decoration: none;
   }
-  nav { display: flex; gap: 22px; flex-wrap: wrap; }
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+  }
   nav a {
     text-decoration: none;
     font-size: 15px;
@@ -48,24 +69,57 @@ const { hideContactCTA = false } = Astro.props;
   nav a:hover { color: var(--costos); }
   .header-cta { padding: .55rem 1.1rem; font-size: 14px; }
 
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  .menu-toggle span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: var(--text);
+    border-radius: 2px;
+  }
+
   @media (max-width: 640px) {
     .header-inner {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 14px;
+      flex-wrap: wrap;
     }
     .logo :global(img) {
-      height: 44px !important;
+      height: 40px !important;
       width: auto !important;
     }
+    .menu-toggle {
+      display: flex;
+    }
     nav {
+      display: none;
       flex-direction: column;
-      gap: 12px;
+      align-items: flex-start;
+      gap: 4px;
+      width: 100%;
+      order: 3;
+      padding-top: 14px;
+    }
+    nav.is-open {
+      display: flex;
+    }
+    nav a {
+      padding: 10px 0;
       width: 100%;
     }
     .header-cta {
       width: 100%;
       text-align: center;
+      margin-top: 6px;
     }
   }
 </style>
