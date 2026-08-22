@@ -1,16 +1,18 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const minDate = new Date().toISOString().split('T')[0];
 ---
 <BaseLayout
   title="Agendar Reunión de Evaluación"
-  description="Coordine una sesión con TEKORA Consultoría en Operaciones para evaluar sus procesos de costos e inventarios."
+  description="Coordine una sesión con Tekorá Consultoría en Operaciones para evaluar sus procesos de costos e inventarios."
 >
   <section class="section-soft" style="padding: 40px 0 60px 0;">
     <div class="container" style="max-width: 680px;">
       
       <div class="booking-card">
         <div class="booking-header">
-          <p class="eyebrow neutral">TEKORA CONSULTORÍA EN OPERACIONES</p>
+          <p class="eyebrow neutral">TEKORÁ CONSULTORÍA EN OPERACIONES</p>
           <h1>Agendar reunión de evaluación</h1>
           <p class="text-muted" style="margin-top: 8px;">
             Para conocer los desafíos donde podemos resolver las inconsistencias de su operación, seleccione sus preferencias:
@@ -19,7 +21,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
         <!-- FORMULARIO DE CAPTURA -->
         <form id="bookingForm" class="booking-form">
-          
+
+          <!-- CAMPO TRAMPA ANTI-SPAM (invisible para personas) -->
+          <input type="text" name="website" id="website" style="position:absolute; left:-9999px;" tabindex="-1" autocomplete="off" />
+
           <!-- PASO 1: DATOS DE CONTACTO E IDENTIFICACIÓN -->
           <div class="form-section" style="margin-top: 24px;">
             <label class="field-label">1. Datos de Contacto e Identificación</label>
@@ -101,7 +106,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <div class="form-section" style="margin-top: 24px;">
             <label class="field-label">5. Preferencia de Agenda</label>
             <div class="input-group">
-              <input type="date" id="fecha" name="fecha" class="form-input" required />
+              <input type="date" id="fecha" name="fecha" class="form-input" required min={minDate} />
             </div>
             <div class="card-options grid-2" style="margin-top: 12px;">
               <label class="option-card">
@@ -133,7 +138,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div id="successMessage" class="success-box" style="display: none;">
           <h2>Solicitud recibida</h2>
           <p>
-            Agradecemos su tiempo y el detalle de su información. Un consultor de <strong>TEKORA</strong> revisará su perfil operativo y se comunicará vía WhatsApp o llamada telefónica para coordinar la reunión.
+            Agradecemos su tiempo y el detalle de su información. Un consultor de <strong>Tekorá</strong> revisará su perfil operativo y se comunicará vía WhatsApp o llamada telefónica para coordinar la reunión.
           </p>
         </div>
 
@@ -145,38 +150,40 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <!-- SCRIPT DE PROCESAMIENTO Y ENVÍO -->
 <script>
-  const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbxjQoLsVyDC4w-htRMKz1DAfuwoXnOnk3ZEs_e3h6sJ6Oxtbj0l0dxsNK6tXsg4mgy7/exec";
-
   const form = document.getElementById('bookingForm');
   const submitBtn = document.getElementById('submitBtn');
   const successBox = document.getElementById('successMessage');
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    
+
     submitBtn.disabled = true;
     submitBtn.innerText = "Procesando solicitud...";
 
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
 
-    fetch(WEBHOOK_URL, {
+    fetch('/api/reservar', {
       method: 'POST',
-      mode: 'no-cors',
-      headers: {
-        'Content-Type': 'text/plain;charset=utf-8',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     })
-    .then(() => {
-      form.style.display = 'none';
-      successBox.style.display = 'block';
-    })
-    .catch((error) => {
-      alert("Ocurrió un inconveniente al registrar su solicitud. Por favor, intente nuevamente.");
-      submitBtn.disabled = false;
-      submitBtn.innerText = "Enviar solicitud de reunión";
-    });
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.ok) {
+          form.style.display = 'none';
+          successBox.style.display = 'block';
+        } else {
+          alert("Ocurrió un inconveniente al registrar su solicitud. Por favor, intente nuevamente.");
+          submitBtn.disabled = false;
+          submitBtn.innerText = "Enviar solicitud de reunión";
+        }
+      })
+      .catch(() => {
+        alert("Ocurrió un inconveniente al registrar su solicitud. Por favor, intente nuevamente.");
+        submitBtn.disabled = false;
+        submitBtn.innerText = "Enviar solicitud de reunión";
+      });
   });
 </script>
 
