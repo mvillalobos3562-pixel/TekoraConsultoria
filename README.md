@@ -66,7 +66,7 @@ Aparece automáticamente en `/recursos` y en `/recursos/[slug]` — no hace falt
 1. Subir este repositorio a GitHub — **los archivos deben quedar en la raíz del repo**, no dentro de una subcarpeta (si se arrastra la carpeta completa en vez de su contenido, el build falla porque no encuentra `package.json`).
 2. En Cloudflare: **Workers & Pages → Create → Connect to Git** y seleccionar el repositorio.
 3. Build command: `npm run build`. El archivo `wrangler.jsonc` ya incluido le indica a Cloudflare que sirva `./dist` como sitio estático.
-4. Cada push a la rama principal despliega automáticamente.
+4. Cada push a la rama principal despliega automáticamente..
 
 ## Pendientes abiertos (fuera del código, decisiones de negocio)
 
