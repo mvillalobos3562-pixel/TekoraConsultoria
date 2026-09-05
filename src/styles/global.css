@@ -45,7 +45,7 @@ a { color: inherit; }
 
 h1, h2, h3 { font-weight: 700; line-height: 1.15; margin: 0; }
 h1 { font-size: clamp(38px, 6.5vw, 64px); letter-spacing: -0.01em; }
-h1.h1-long { font-size: clamp(34px, 5vw, 52px); } /* para títulos más largos (ej. Costos) — el tamaño se ajusta al largo real del texto, no al revés */
+h1.h1-long { font-size: clamp(34px, 5vw, 52px); }
 h2 { font-weight: 600; font-size: clamp(24px, 3.5vw, 30px); }
 h3 { font-weight: 600; font-size: 20px; }
 p { margin: 0 0 1rem; font-size: 17px; }
@@ -61,7 +61,6 @@ p { margin: 0 0 1rem; font-size: 17px; }
 .eyebrow.costos { color: var(--costos); }
 .eyebrow.inventarios { color: var(--inventarios); }
 
-/* Botones */
 .btn {
   display: inline-block;
   padding: .85rem 1.5rem;
@@ -87,7 +86,6 @@ p { margin: 0 0 1rem; font-size: 17px; }
   flex-wrap: wrap;
 }
 
-/* Divisor "firma" — la luz de Prisma separándose en los dos acentos */
 .prism-rule {
   height: 4px;
   border-radius: 2px;
@@ -96,7 +94,6 @@ p { margin: 0 0 1rem; font-size: 17px; }
   border: none;
 }
 
-/* Bloques de sección */
 section { padding: 64px 0; }
 .section-soft { background: var(--bg-soft); }
 
@@ -125,7 +122,6 @@ section { padding: 64px 0; }
 .faq-item p.q { font-weight: 600; margin: 0 0 6px; font-size: 16px; }
 .faq-item p.a { margin: 0; color: var(--text-muted); font-size: 15px; }
 
-/* Formulario */
 label { display: block; font-size: 14px; font-weight: 500; margin-bottom: 6px; }
 input, select, textarea {
   width: 100%;
@@ -149,9 +145,6 @@ textarea { min-height: 120px; resize: vertical; }
    BLOQUES NUEVOS — revisión UX Costos/Inventarios
    ============================================ */
 
-/* --- Header reducido (Costos/Inventarios): estilos en src/components/Header.astro (scoped) --- */
-
-/* --- Secciones de fondo oscuro (ritmo: Hero, Síntomas, Credibilidad, CTA cierre) --- */
 .section-dark {
   background: var(--dark-bg);
   color: #fff;
@@ -161,7 +154,6 @@ textarea { min-height: 120px; resize: vertical; }
 .section-dark .eyebrow.costos { color: #6FD6BC; }
 .section-dark .eyebrow.inventarios { color: #E0A184; }
 
-/* --- Hero full-bleed con imagen de fondo --- */
 .hero-fullbleed {
   position: relative;
   min-height: 88vh;
@@ -169,7 +161,6 @@ textarea { min-height: 120px; resize: vertical; }
   align-items: center;
   background-size: cover;
   background-position: center;
-  /* Placeholder mientras no hay foto final (ver README): degradado oscuro con tinte de línea */
   background-image: linear-gradient(160deg, #14171b 0%, var(--dark-bg) 55%, #14171b 100%);
 }
 .hero-fullbleed::before {
@@ -182,7 +173,6 @@ textarea { min-height: 120px; resize: vertical; }
 .hero-fullbleed h1 { color: #fff; max-width: 900px; }
 .hero-fullbleed p { color: var(--dark-text-muted); max-width: 56ch; font-size: 19px; }
 
-/* --- Síntomas: pantalla casi completa, texto ancho completo --- */
 .section-syntoms {
   min-height: 82vh;
   display: flex;
@@ -193,7 +183,6 @@ textarea { min-height: 120px; resize: vertical; }
 .section-syntoms ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 16px; }
 .section-syntoms li { font-size: clamp(17px, 2vw, 21px); color: var(--dark-text-muted); max-width: 62ch; }
 
-/* --- El Diagnóstico: línea de tiempo vertical numerada --- */
 .timeline { display: flex; flex-direction: column; max-width: 640px; }
 .timeline-step { display: flex; gap: 20px; }
 .timeline-marker { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
@@ -211,7 +200,6 @@ textarea { min-height: 120px; resize: vertical; }
 .timeline-content p { color: var(--text-muted); margin: 0; }
 .timeline-step:last-child .timeline-line { display: none; }
 
-/* --- Qué recibe: diagrama puente envuelto en "Informe escrito" --- */
 .report-frame {
   border: 1px solid var(--border);
   border-radius: 14px;
@@ -269,7 +257,6 @@ textarea { min-height: 120px; resize: vertical; }
   .bridge-arrow { transform: rotate(90deg); justify-self: center; }
 }
 
-/* --- Implementación: chips QUÉ/CÓMO + tarjetas de escenario --- */
 .chip-pair { display: flex; align-items: center; gap: 10px; margin-bottom: 2rem; flex-wrap: wrap; }
 .chip { border: 1px solid var(--border); border-radius: var(--radius); padding: 8px 14px; font-size: 13px; color: var(--text-muted); }
 .chip.chip-active { border-color: var(--line-color, var(--costos)); background: var(--line-soft, var(--costos-soft)); color: var(--line-color, var(--costos)); font-weight: 500; }
@@ -278,7 +265,6 @@ textarea { min-height: 120px; resize: vertical; }
 .scenario-card svg { width: 22px; height: 22px; color: var(--text-muted); margin-bottom: 10px; }
 .scenario-card p { font-size: 13px; margin: 0; }
 
-/* --- FAQ: acordeón nativo --- */
 .faq-accordion { max-width: 68ch; }
 .faq-accordion details {
   border-bottom: 1px solid var(--border);
@@ -305,7 +291,6 @@ textarea { min-height: 120px; resize: vertical; }
 .faq-accordion details[open] summary::after { content: '−'; }
 .faq-accordion .a { color: var(--text-muted); font-size: 15px; margin: 12px 0 0; }
 
-/* --- CTA de cierre: botón más grande (bookend con el Hero) --- */
 .btn-large { padding: 1.1rem 2.2rem; font-size: 17px; }
 
 @media (max-width: 640px) {
