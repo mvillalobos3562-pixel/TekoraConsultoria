@@ -1,0 +1,309 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const minDate = new Date().toISOString().split('T')[0];
+---
+<BaseLayout
+  title="Agendar Reunión de Evaluación"
+  description="Coordine una sesión con Tekorá Consultoría en Operaciones para evaluar sus procesos de costos e inventarios."
+>
+  <section class="section-soft" style="padding: 40px 0 60px 0;">
+    <div class="container" style="max-width: 680px;">
+      
+      <div class="booking-card">
+        <div class="booking-header">
+          <p class="eyebrow neutral">TEKORÁ CONSULTORÍA EN OPERACIONES</p>
+          <h1>Agendar reunión de evaluación</h1>
+          <p class="text-muted" style="margin-top: 8px;">
+            Para conocer los desafíos donde podemos resolver las inconsistencias de su operación, seleccione sus preferencias:
+          </p>
+        </div>
+
+        <!-- FORMULARIO DE CAPTURA -->
+        <form id="bookingForm" class="booking-form">
+
+          <!-- CAMPO TRAMPA ANTI-SPAM (invisible para personas) -->
+          <input type="text" name="website" id="website" style="position:absolute; left:-9999px;" tabindex="-1" autocomplete="off" />
+
+          <!-- PASO 1: DATOS DE CONTACTO E IDENTIFICACIÓN -->
+          <div class="form-section" style="margin-top: 24px;">
+            <label class="field-label">1. Datos de Contacto e Identificación</label>
+            <div class="input-group">
+              <input type="text" id="nombre" name="nombre" placeholder="Nombre y Apellido *" required class="form-input" />
+            </div>
+            <div class="input-group" style="margin-top: 12px;">
+              <input type="text" id="cargo" name="cargo" placeholder="Cargo (Ej. Gerente General, Director de Operaciones) *" required class="form-input" />
+            </div>
+            <div class="input-group" style="margin-top: 12px;">
+              <input type="text" id="empresa" name="empresa" placeholder="Nombre de la Empresa *" required class="form-input" />
+            </div>
+            <div class="input-group" style="margin-top: 12px;">
+              <input type="tel" id="whatsapp" name="whatsapp" placeholder="WhatsApp de Contacto *" required class="form-input" />
+            </div>
+            <div class="input-group" style="margin-top: 12px;">
+              <input type="email" id="email" name="email" placeholder="Correo Electrónico (Opcional)" class="form-input" />
+            </div>
+          </div>
+
+          <!-- PASO 2: TIPO DE EMPRESA -->
+          <div class="form-section" style="margin-top: 28px;">
+            <label class="field-label">2. Tipo de Empresa</label>
+            <div class="card-options grid-4">
+              <label class="option-card">
+                <input type="radio" name="tipo_empresa" value="Comercial" checked />
+                <span>Comercial</span>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="tipo_empresa" value="Servicios" />
+                <span>Servicios</span>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="tipo_empresa" value="Producción" />
+                <span>Producción</span>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="tipo_empresa" value="Otro" />
+                <span>Otro</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- PASO 3: SERVICIO DE INTERÉS -->
+          <div class="form-section" style="margin-top: 24px;">
+            <label class="field-label">3. Servicio de Interés</label>
+            <div class="card-options grid-3">
+              <label class="option-card">
+                <input type="radio" name="servicio" value="Costos" checked />
+                <span>Gestión de Costos</span>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="servicio" value="Inventarios" />
+                <span>Control de Inventarios</span>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="servicio" value="Ambos" />
+                <span>Ambos Servicios</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- PASO 4: MODALIDAD -->
+          <div class="form-section" style="margin-top: 24px;">
+            <label class="field-label">4. Modalidad Preferida</label>
+            <div class="card-options grid-2">
+              <label class="option-card">
+                <input type="radio" name="modalidad" value="Virtual" checked />
+                <span>💻 Virtual (Teams / Meet)</span>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="modalidad" value="Presencial" />
+                <span>🏢 Presencial (Santa Cruz)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- PASO 5: PREFERENCIA DE AGENDA -->
+          <div class="form-section" style="margin-top: 24px;">
+            <label class="field-label">5. Preferencia de Agenda</label>
+            <div class="input-group">
+              <input type="date" id="fecha" name="fecha" class="form-input" required min={minDate} />
+            </div>
+            <div class="card-options grid-2" style="margin-top: 12px;">
+              <label class="option-card">
+                <input type="radio" name="horario" value="Mañana (09:00 - 12:00)" checked />
+                <span>Mañana (09:00 - 12:00)</span>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="horario" value="Tarde (14:30 - 18:00)" />
+                <span>Tarde (14:30 - 18:00)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- BOTÓN DE CONFIRMACIÓN -->
+          <div style="margin-top: 32px;">
+            <button type="submit" id="submitBtn" class="btn btn-neutral btn-full">
+              Enviar solicitud de reunión
+            </button>
+          </div>
+
+          <!-- MICROCOPY DE EXPECTATIVAS -->
+          <p class="microcopy-text">
+            Agradecemos su interés en evaluar su operación con nosotros. Revisaremos sus datos y nos comunicaremos con usted por WhatsApp o llamada para confirmar la fecha y el horario de su reunión de diagnóstico.
+          </p>
+
+        </form>
+
+        <!-- MENSAJE DE ÉXITO FORMAL (DESPLEGABLE TRAS ENVÍO) -->
+        <div id="successMessage" class="success-box" style="display: none;">
+          <h2>Solicitud recibida</h2>
+          <p>
+            Agradecemos su tiempo y el detalle de su información. Un consultor de <strong>Tekorá</strong> revisará su perfil operativo y se comunicará vía WhatsApp o llamada telefónica para coordinar la reunión.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>
+
+<!-- SCRIPT DE PROCESAMIENTO Y ENVÍO -->
+<script>
+  const form = document.getElementById('bookingForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const successBox = document.getElementById('successMessage');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    submitBtn.disabled = true;
+    submitBtn.innerText = "Procesando solicitud...";
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    fetch('/api/reservar', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.ok) {
+          form.style.display = 'none';
+          successBox.style.display = 'block';
+        } else {
+          alert("Ocurrió un inconveniente al registrar su solicitud. Por favor, intente nuevamente.");
+          submitBtn.disabled = false;
+          submitBtn.innerText = "Enviar solicitud de reunión";
+        }
+      })
+      .catch(() => {
+        alert("Ocurrió un inconveniente al registrar su solicitud. Por favor, intente nuevamente.");
+        submitBtn.disabled = false;
+        submitBtn.innerText = "Enviar solicitud de reunión";
+      });
+  });
+</script>
+
+<style>
+  .booking-card {
+    background: #ffffff;
+    border: 1px solid var(--border, #e2e8f0);
+    border-radius: 12px;
+    padding: 36px 32px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  }
+
+  .booking-header h1 {
+    font-size: 26px;
+    line-height: 1.25;
+    margin-top: 6px;
+  }
+
+  .field-label {
+    display: block;
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 10px;
+    color: var(--text, #1e293b);
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--border, #cbd5e1);
+    border-radius: 6px;
+    font-size: 15px;
+    background: #fff;
+    color: var(--text, #0f172a);
+    transition: border-color 0.15s ease;
+  }
+
+  .form-input:focus {
+    outline: none;
+    border-color: var(--text, #0f172a);
+  }
+
+  .card-options {
+    display: grid;
+    gap: 10px;
+  }
+
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+  .option-card {
+    position: relative;
+    border: 1px solid var(--border, #cbd5e1);
+    border-radius: 6px;
+    padding: 12px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+    user-select: none;
+    transition: all 0.15s ease;
+    background: #f8fafc;
+  }
+
+  .option-card input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .option-card:hover {
+    border-color: var(--text, #0f172a);
+    background: #fff;
+  }
+
+  .option-card:has(input:checked) {
+    border-color: var(--text, #0f172a);
+    background: #ffffff;
+    font-weight: 600;
+    box-shadow: 0 0 0 1px var(--text, #0f172a);
+  }
+
+  .btn-full {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .microcopy-text {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text-muted, #64748b);
+    text-align: center;
+    margin-top: 16px;
+  }
+
+  .success-box {
+    text-align: center;
+    padding: 24px 12px;
+  }
+
+  .success-box h2 {
+    font-size: 22px;
+    color: var(--text, #0f172a);
+    margin-bottom: 12px;
+  }
+
+  .success-box p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-muted, #475569);
+    max-width: 52ch;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 600px) {
+    .booking-card { padding: 24px 18px; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  }
+</style>

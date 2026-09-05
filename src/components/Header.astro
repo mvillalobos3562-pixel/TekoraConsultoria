@@ -1,0 +1,165 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
+
+export interface Props {
+  hideContactCTA?: boolean;
+  reducedForLine?: 'costos' | 'inventarios';
+  ctaText?: string;
+  ctaHref?: string;
+}
+const {
+  hideContactCTA = false,
+  reducedForLine,
+  ctaText = 'Contactar',
+  ctaHref = '/agendar',
+} = Astro.props;
+
+const lineLabel = reducedForLine === 'costos'
+  ? 'Diagnóstico de Costos'
+  : reducedForLine === 'inventarios'
+  ? 'Diagnóstico de Inventarios'
+  : null;
+---
+<header class={`site-header ${reducedForLine ? 'site-header-line' : ''}`}>
+  <div class="container header-inner">
+    <a href="/" class="logo">
+      <Image src={logo} alt="Tekorá Consultoría en Operaciones" height={92} />
+    </a>
+
+    {lineLabel ? (
+      <span class={`line-label ${reducedForLine}`}>{lineLabel}</span>
+    ) : (
+      <nav id="site-nav">
+        <a href="/costos">Soluciones en costos</a>
+        <a href="/inventarios">Soluciones en inventarios</a>
+      </nav>
+    )}
+
+    <div class="header-actions">
+      {!hideContactCTA && (
+        <a href={ctaHref} class={`btn header-cta ${reducedForLine ? `btn-${reducedForLine}` : 'btn-neutral'}`}>{ctaText}</a>
+      )}
+      {!reducedForLine && (
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      )}
+    </div>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const nav = document.getElementById('site-nav');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = nav?.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+</script>
+
+<style>
+  .site-header {
+    border-bottom: 1px solid var(--border);
+    padding: 18px 0;
+  }
+  .site-header-line {
+    border-bottom: none;
+    background: var(--dark-bg);
+  }
+  .line-label {
+    font-size: 19px;
+    font-weight: 700;
+  }
+  .line-label.costos { color: var(--costos); }
+  .line-label.inventarios { color: var(--inventarios); }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+  }
+  nav a {
+    text-decoration: none;
+    font-size: 15px;
+    color: var(--text);
+  }
+  nav a:hover { color: var(--costos); }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .header-cta {
+    padding: .55rem 1.1rem;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  .menu-toggle span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: var(--text);
+    border-radius: 2px;
+  }
+
+  @media (max-width: 640px) {
+    .header-inner {
+      flex-wrap: wrap;
+    }
+    .logo :global(img) {
+      height: 40px !important;
+      width: auto !important;
+    }
+    .menu-toggle {
+      display: flex;
+    }
+    .header-cta {
+      padding: .45rem .8rem;
+      font-size: 13px;
+    }
+    nav {
+      display: none;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      width: 100%;
+      order: 3;
+      padding-top: 14px;
+    }
+    nav.is-open {
+      display: flex;
+    }
+    nav a {
+      padding: 10px 0;
+      width: 100%;
+    }
+  }
+</style>

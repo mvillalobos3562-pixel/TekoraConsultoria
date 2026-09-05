@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Inicio"
+  description="Tekorá — Consultores en Operaciones. Costos e inventarios, con datos, no a ciegas."
+>
+  <section>
+    <div class="container position-grid">
+      <div>
+        <h1>Consultores en Operaciones.</h1>
+        <p class="text-muted" style="font-size: 19px; margin-top: 20px; max-width: 52ch;">
+          Operar a ciegas termina saliendo caro. Si su estructura de costos no responde a tiempo o su inventario difiere del sistema, sus márgenes se fugan. Le devolvemos el control con procesos ágiles y simples que se pueden cumplir.
+        </p>
+      </div>
+      <img src="/tekora-home2.webp" alt="Consultoría en operaciones — Tekorá" class="position-art" />
+    </div>
+  </section>
+  <section class="section-soft">
+    <div class="container">
+      <h2>Problemas que resolvemos</h2>
+      <p class="text-muted" style="max-width: 60ch; margin-top: 8px;">
+        Dos líneas de trabajo para devolverle la certeza y el control operativo a su empresa.
+      </p>
+      <div class="card-grid" style="margin-top: 28px;">
+        <div class="card">
+          <p class="eyebrow costos">COSTOS</p>
+          <h3>De asumir supuestos costos a conocer el número real de su operación.</h3>
+          <p class="text-muted" style="margin-top: 12px;">
+            Cuando su sistema no refleja su dinámica diaria, las decisiones se toman a ciegas y el margen se diluye sin que se note. Ajustamos su modelo de datos a la realidad de su negocio para que deje de depender de planillas frágiles y sepa exactamente cuánto le cuesta operar.
+          </p>
+          <p style="margin-top: 16px;"><a href="/costos">Conocer servicio de Costos →</a></p>
+        </div>
+        <div class="card">
+          <p class="eyebrow inventarios">INVENTARIOS</p>
+          <h3>De bodegas descuadradas a un inventario que respalde sus ventas.</h3>
+          <p class="text-muted" style="margin-top: 12px;">
+            Los recuentos físicos eternos y las diferencias entre sistema y bodega paralizan la operación, inmovilizan capital o le hacen perder clientes. Sincronizamos su stock real con su información para que su inventario sea una herramienta de trabajo confiable, no un dolor de cabeza diario.
+          </p>
+          <p style="margin-top: 16px;"><a href="/inventarios">Conocer servicio de Inventarios →</a></p>
+        </div>
+      </div>
+      <div style="margin-top: 32px;">
+        <a href="/agendar" class="btn btn-neutral">Contactar</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+  .position-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 32px;
+    align-items: center;
+  }
+  .position-art {
+    width: 100%;
+    border-radius: 14px;
+  }
+  @media (max-width: 780px) {
+    .position-grid { grid-template-columns: 1fr; }
+    .position-art { order: -1; }
+  }
+</style>
+
+Cambios: la columna de texto y la de imagen quedan casi parejas (antes el texto acaparaba espacio de sobra que no usaba, porque el párrafo ya tiene su propio límite de ancho); la imagen ya no tiene techo de 320px, así que crece con su columna; y sin sombra, el blanco se funde con la página. El texto no se ve afectado — su ancho lo sigue controlando el max-width: 52ch del párrafo, no la columna.
+
+dame el codigo completo
+
+Ejecutó un comando

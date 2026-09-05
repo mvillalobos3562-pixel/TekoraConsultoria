@@ -1,0 +1,213 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Diagnóstico de Costos"
+  description="El tipo de cambio se mueve, sus costos cambian con él. Diagnóstico de costos para empresas en Bolivia."
+  reducedForLine="costos"
+>
+  <!-- 1. HERO — full-bleed, overlay oscuro, foto pendiente (placeholder de degradado) -->
+  <section class="hero-fullbleed" style="background-image: url('/costos-hero.webp');">
+    <div class="container">
+      <p class="eyebrow costos">Costos</p>
+      <h1 class="h1-long">Cada mes que pasa sin saber cuánto le cuesta realmente cada producto, es un mes de precios decididos a ciegas.</h1>
+      <p>El tipo de cambio se mueve, sus costos cambian con él — y la mayoría de los sistemas de costeo en Bolivia no se entera a tiempo.</p>
+      <div class="cta-group" style="margin-top: 24px;">
+        <a href="/agendar" class="btn btn-costos">Empezar el diagnóstico</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. SÍNTOMAS — fondo oscuro, pantalla casi completa, ancho completo -->
+  <section class="section-dark section-syntoms">
+    <div class="container">
+      <h2>Señales de que sus costos ya no reflejan la realidad</h2>
+      <ul>
+        <li>Fija precios con una estructura de costos que no se ha revisado desde el último ajuste cambiario.</li>
+        <li>Conoce el margen global del mes, pero no el margen real de cada producto.</li>
+        <li>Cada vez que el tipo de cambio se mueve, nadie recalcula el impacto hasta que ya pasó.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 3. EL DIAGNÓSTICO — línea de tiempo vertical -->
+  <section>
+    <div class="container">
+      <h2>Así funciona el diagnóstico</h2>
+      <div class="timeline" style="margin-top: 32px;">
+        <div class="timeline-step costos">
+          <div class="timeline-marker">
+            <div class="timeline-num">1</div>
+            <div class="timeline-line"></div>
+          </div>
+          <div class="timeline-content">
+            <h3>Reunión de diagnóstico</h3>
+            <p>Le mostramos con claridad qué puede costarle no identificar ni resolver esos problemas, y cómo el diagnóstico se lo resuelve. Confirmamos juntos si es el paso correcto para su empresa. En este punto decide si contrata el servicio.</p>
+          </div>
+        </div>
+        <div class="timeline-step costos">
+          <div class="timeline-marker">
+            <div class="timeline-num">2</div>
+            <div class="timeline-line"></div>
+          </div>
+          <div class="timeline-content">
+            <h3>Conocer su operación</h3>
+            <p>No partimos solo de datos: conocer cómo opera, sus procesos y procedimientos, es imprescindible para un diagnóstico preciso. No necesita cambiar de sistema ni implementar nada nuevo para este paso.</p>
+          </div>
+        </div>
+        <div class="timeline-step costos">
+          <div class="timeline-marker">
+            <div class="timeline-num">3</div>
+            <div class="timeline-line"></div>
+          </div>
+          <div class="timeline-content">
+            <h3>Análisis</h3>
+            <p>Identificamos si su estructura de costos refleja o no la realidad de su operación, y en qué puntos específicos hay que ajustarla para que tenga mejoras medibles.</p>
+          </div>
+        </div>
+        <div class="timeline-step costos">
+          <div class="timeline-marker">
+            <div class="timeline-num">4</div>
+          </div>
+          <div class="timeline-content">
+            <h3>Entrega de informe</h3>
+            <p>Presentamos los hallazgos en una reunión, con el orden de prioridad para actuar.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. QUÉ RECIBE — diagrama puente envuelto en "Informe escrito" -->
+  <section class="section-soft">
+    <div class="container">
+      <h2>Qué recibe</h2>
+      <p class="text-muted" style="max-width: 60ch; margin: 8px 0 32px;">
+        Al terminar, no se lleva una lista de observaciones sueltas — se lleva un plan claro para actuar.
+      </p>
+
+      <div class="report-frame" style="--line-color: var(--costos); --line-soft: var(--costos-soft);">
+        <span class="report-frame-label">Informe escrito — documenta todo el diagnóstico</span>
+
+        <div class="bridge">
+          <div class="bridge-box">
+            <p class="bridge-eyebrow">Diagnóstico</p>
+            <p class="bridge-title">Dónde está su empresa hoy</p>
+          </div>
+          <span class="bridge-arrow">→</span>
+          <div class="bridge-box">
+            <p class="bridge-eyebrow">Plan de acción</p>
+            <div class="bridge-tiers">
+              <div class="bridge-tier imprescindible">Imprescindible</div>
+              <div class="bridge-tier necesaria">Necesaria, no imprescindible</div>
+              <div class="bridge-tier oportunidad">Oportunidad de mejora</div>
+            </div>
+          </div>
+          <span class="bridge-arrow">→</span>
+          <div class="bridge-box goal">
+            <p class="bridge-eyebrow">Objetivo</p>
+            <p class="bridge-title">Dónde quiere llegar</p>
+          </div>
+        </div>
+
+        <div class="report-footer">Presentado en persona — presentación ejecutiva en la reunión de entrega</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. CREDIBILIDAD — fondo oscuro, texto pendiente de CVs (placeholder) -->
+  <section class="section-dark">
+    <div class="container">
+      <h2>Por qué Tekorá</h2>
+      <ul style="list-style:none; padding:0; margin-top:20px; display:flex; flex-direction:column; gap:12px;">
+        <li class="text-muted">[Placeholder — trayectoria del fundador, pendiente de CV]</li>
+        <li class="text-muted">[Placeholder — especialización en costos e inventarios, no consultoría genérica]</li>
+        <li class="text-muted">[Placeholder — quién ejecuta el trabajo]</li>
+        <li class="text-muted">[Placeholder — rigor del propio proceso de diagnóstico]</li>
+        <li class="text-muted">[Placeholder — contexto local, Bolivia]</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 6. IMPLEMENTACIÓN — chips QUÉ/CÓMO + tarjetas de escenario -->
+  <section>
+    <div class="container" style="--line-color: var(--costos); --line-soft: var(--costos-soft);">
+      <h2>Implementación en Costos</h2>
+      <div class="chip-pair" style="margin-top: 24px;">
+        <div class="chip">Qué — el diagnóstico</div>
+        <span class="bridge-arrow">→</span>
+        <div class="chip chip-active">Cómo — la implementación</div>
+      </div>
+
+      <p style="max-width: 62ch;">
+        El diagnóstico le muestra dónde están los problemas en el cálculo de costos: el QUÉ. La Implementación es donde se resuelve: el CÓMO.
+      </p>
+      <p class="text-muted" style="max-width: 62ch;">
+        Nuestro informe de diagnóstico es el punto de partida. La Implementación convierte ese plan de acción en el sistema que su empresa usará para calcular sus costos: un costeo por producto o servicio que se mantiene actualizado con la realidad, no una fotografía que vuelve a quedar vieja.
+      </p>
+
+      <div class="scenario-grid" style="margin-top: 24px;">
+        <div class="scenario-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 21V7l8-4 8 4v14M4 21h16M9 21v-6h6v6M9 11h.01M15 11h.01M9 7h.01M15 7h.01"/></svg>
+          <p>Si mejora su infraestructura, verá el impacto en sus costos.</p>
+        </div>
+        <div class="scenario-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 8l-9-5-9 5 9 5 9-5zM3 8v8l9 5 9-5V8M12 13v8"/></svg>
+          <p>Si incorpora nuevos productos o servicios, verá el impacto en los costos de los que ya tiene.</p>
+        </div>
+        <div class="scenario-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="7" r="3.2"/><path d="M2 21v-1c0-3 3-5 7-5s7 2 7 5v1M17 8a3 3 0 1 0 0-6M22 21v-1c0-2.4-1.8-4.2-4-4.8"/></svg>
+          <p>Si contrata, externaliza o reduce personal, lo verá reflejado en sus costos.</p>
+        </div>
+        <div class="scenario-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg>
+          <p>Si su competencia modifica precios y usted decide responder, sabrá el impacto exacto en sus márgenes.</p>
+        </div>
+        <div class="scenario-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          <p>Si abre una nueva sucursal, punto de venta o almacén, verá el impacto en sus costos.</p>
+        </div>
+      </div>
+
+      <p style="margin-top: 24px; font-weight: 500;">En general, tomará decisiones más informadas y rápidas.</p>
+      <p class="text-muted" style="max-width: 62ch;">
+        El alcance se define con usted, según el tamaño y la complejidad de su operación — se conversa en la misma reunión de entrega del diagnóstico.
+      </p>
+    </div>
+  </section>
+
+  <!-- 7. FAQ — acordeón -->
+  <section class="section-soft">
+    <div class="container">
+      <h2>Preguntas frecuentes</h2>
+      <div class="faq-accordion" style="margin-top: 20px;">
+        <details>
+          <summary>¿Cuánto dura el diagnóstico?</summary>
+          <p class="a">Varía según el tamaño y la complejidad de su operación; se define en la reunión de diagnóstico.</p>
+        </details>
+        <details>
+          <summary>¿Necesito cambiar de sistema o ERP?</summary>
+          <p class="a">No. Se trabaja con la información que ya tiene.</p>
+        </details>
+        <details>
+          <summary>¿Y si el diagnóstico no encuentra nada grave?</summary>
+          <p class="a">Aun así, sale con el mismo informe de hallazgos priorizados. Ninguna empresa es perfecta — siempre hay oportunidades de mejora. Sabrá con certeza en qué situación está la suya, algo que hoy no tiene con precisión.</p>
+        </details>
+        <details>
+          <summary>¿Necesito contratar la Implementación después del diagnóstico?</summary>
+          <p class="a">No es obligatorio. El diagnóstico y el informe le pertenecen sin condición — puede ejecutar los cambios con su propio equipo si lo prefiere. La Implementación existe para cuando prefiere que lo hagamos nosotros, con el mismo criterio del diagnóstico.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. CTA DE CIERRE — fondo oscuro, botón grande (bookend con Hero) -->
+  <section class="section-dark">
+    <div class="container" style="text-align:center;">
+      <h2>Deje de asumir supuestos costos y conozca el número real de su negocio.</h2>
+      <div class="cta-group" style="justify-content:center; margin-top: 24px;">
+        <a href="/agendar" class="btn btn-costos btn-large">Empezar el diagnóstico</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
