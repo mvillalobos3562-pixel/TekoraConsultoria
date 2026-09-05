@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import logo from '../assets/logo.png';
+import logoDark from '../assets/logo-dark.png';
 
 export interface Props {
   hideContactCTA?: boolean;
@@ -24,7 +25,7 @@ const lineLabel = reducedForLine === 'costos'
 <header class={`site-header ${reducedForLine ? 'site-header-line' : ''}`}>
   <div class="container header-inner">
     <a href="/" class="logo">
-      <Image src={logo} alt="Tekorá Consultoría en Operaciones" height={92} />
+      <Image src={reducedForLine ? logoDark : logo} alt="Tekorá Consultoría en Operaciones" height={92} />
     </a>
 
     {lineLabel ? (
@@ -69,9 +70,6 @@ const lineLabel = reducedForLine === 'costos'
   .site-header-line {
     border-bottom: none;
     background: var(--dark-bg);
-  }
-  .site-header-line .logo :global(img) {
-    filter: brightness(0) invert(1);
   }
   .line-label {
     font-size: 19px;
