@@ -73,4 +73,4 @@ Aparece automáticamente en `/recursos` y en `/recursos/[slug]` — no hace falt
 - **Imágenes**: la sección de posicionamiento en Home usa una ilustración geométrica provisional (SVG inline) — pendiente de reemplazo cuando se defina el estilo visual de imágenes del sitio.
 - Los dos artículos de Recursos que siguen pendientes de redactar.
 - Registrar el dominio y actualizarlo en `astro.config.mjs` (`site`).
-- Confirmar si "Sobre mí" se queda solo en el footer de forma permanente, o si en algún momento vuelve al header..
+- Confirmar si "Sobre mí" se queda solo en el footer de forma permanente, o si en algún momento vuelve al header...
