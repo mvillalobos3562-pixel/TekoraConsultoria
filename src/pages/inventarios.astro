@@ -7,7 +7,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   reducedForLine="inventarios"
 >
   <!-- 1. HERO -->
-  <section class="hero-fullbleed">
+  <section class="hero-fullbleed" style="background-image: url('/inventarios-hero.webp');">
     <div class="container">
       <p class="eyebrow inventarios">Inventarios</p>
       <h1>Cada discrepancia entre lo que dice el sistema y lo que hay en bodega es una decisión que se toma con datos equivocados.</h1>
@@ -86,7 +86,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         Al terminar, no se lleva una lista de observaciones sueltas — se lleva un plan claro para actuar.
       </p>
 
-      <div class="report-frame" style="--line-color: var(--inventarios); --line-soft: var(--inventarios-soft);">
+      <div class="report-frame" style="--line-color: var(--inventarios-text); --line-soft: var(--inventarios-soft);">
         <span class="report-frame-label">Informe escrito — documenta todo el diagnóstico</span>
 
         <div class="bridge">
@@ -131,7 +131,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   <!-- 6. IMPLEMENTACIÓN -->
   <section>
-    <div class="container" style="--line-color: var(--inventarios); --line-soft: var(--inventarios-soft);">
+    <div class="container" style="--line-color: var(--inventarios-text); --line-soft: var(--inventarios-soft);">
       <h2>Implementación en Inventarios</h2>
       <div class="chip-pair" style="margin-top: 24px;">
         <div class="chip">Qué — el diagnóstico</div>
@@ -211,3 +211,4 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 </BaseLayout>
+ 
