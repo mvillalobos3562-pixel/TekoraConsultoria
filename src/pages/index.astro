@@ -5,14 +5,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   title="Inicio"
   description="Tekorá — Consultores en Operaciones. Costos e inventarios, con datos, no a ciegas."
 >
-  <!-- 1. HERO (Blanco puro y nítido por alto contraste) -->
+  <!-- 1. HERO (Alto contraste con tipografía fluida/responsiva) -->
   <section style="background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('/tekora-home2.webp'); background-position: center; background-size: cover; background-repeat: no-repeat; padding: 120px 0;">
     <div class="container">
-      <p class="eyebrow" style="color: #ffffff; font-size: 1.25rem; font-weight: 600; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Operaciones</p>
+      <p class="eyebrow" style="color: #ffffff; font-weight: 600; text-shadow: 0 2px 4px rgba(0,0,0,0.5); font-size: clamp(0.875rem, 2vw, 1.25rem);">
+        Operaciones
+      </p>
       
-      <h1 class="h1-long" style="color: #ffffff; font-size: 4rem; line-height: 1.1; margin-top: 16px; font-weight: 700; text-shadow: 0 4px 16px rgba(0,0,0,0.6);">Consultores en Operaciones.</h1>
+      <h1 class="h1-long" style="color: #ffffff; line-height: 1.1; margin-top: 16px; font-weight: 700; text-shadow: 0 4px 16px rgba(0,0,0,0.6); font-size: clamp(2.5rem, 6vw, 4rem);">
+        Consultores en Operaciones.
+      </h1>
       
-      <p style="max-width: 55ch; font-size: 25px; line-height: 1.5; color: #ffffff; margin-top: 24px; text-shadow: 0 2px 8px rgba(0,0,0,0.6);">
+      <p style="max-width: 55ch; line-height: 1.5; color: #ffffff; margin-top: 24px; text-shadow: 0 2px 8px rgba(0,0,0,0.6); font-size: clamp(1.125rem, 3vw, 1.5625rem);">
         Operar a ciegas termina saliendo caro. Si su estructura de costos no responde a tiempo o su inventario difiere del sistema, sus márgenes se fugan. Le devolvemos el control con procesos ágiles y simples que se pueden cumplir.
       </p>
     </div>
