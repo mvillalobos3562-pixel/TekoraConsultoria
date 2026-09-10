@@ -6,7 +6,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   description="El tipo de cambio se mueve, sus costos cambian con él. Diagnóstico de costos para empresas en Bolivia."
   reducedForLine="costos"
 >
-  <!-- 1. HERO — full-bleed, overlay oscuro, foto pendiente (placeholder de degradado) -->
+  <!-- 1. HERO -->
   <section class="hero-fullbleed" style="background-image: url('/costos-hero.webp');">
     <div class="container">
       <p class="eyebrow costos">Costos</p>
@@ -18,7 +18,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- 2. SÍNTOMAS — fondo oscuro, pantalla casi completa, ancho completo -->
+  <!-- 2. SÍNTOMAS -->
   <section class="section-dark section-syntoms">
     <div class="container">
       <h2>Señales de que sus costos ya no reflejan la realidad</h2>
@@ -30,7 +30,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- 3. EL DIAGNÓSTICO — línea de tiempo vertical -->
+  <!-- 3. EL DIAGNÓSTICO -->
   <section>
     <div class="container">
       <h2>Así funciona el diagnóstico</h2>
@@ -78,7 +78,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- 4. QUÉ RECIBE — diagrama puente envuelto en "Informe escrito" -->
+  <!-- 4. QUÉ RECIBE -->
   <section class="section-soft">
     <div class="container">
       <h2>Qué recibe</h2>
@@ -86,7 +86,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         Al terminar, no se lleva una lista de observaciones sueltas — se lleva un plan claro para actuar.
       </p>
 
-      <div class="report-frame" style="--line-color: var(--costos); --line-soft: var(--costos-soft);">
+      <div class="report-frame" style="--line-color: var(--costos-text); --line-soft: var(--costos-soft);">
         <span class="report-frame-label">Informe escrito — documenta todo el diagnóstico</span>
 
         <div class="bridge">
@@ -94,7 +94,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <p class="bridge-eyebrow">Diagnóstico</p>
             <p class="bridge-title">Dónde está su empresa hoy</p>
           </div>
-          <span class="bridge-arrow">→</span>
+          <span class="flow-arrow">→</span>
           <div class="bridge-box">
             <p class="bridge-eyebrow">Plan de acción</p>
             <div class="bridge-tiers">
@@ -103,7 +103,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               <div class="bridge-tier oportunidad">Oportunidad de mejora</div>
             </div>
           </div>
-          <span class="bridge-arrow">→</span>
+          <span class="flow-arrow">→</span>
           <div class="bridge-box goal">
             <p class="bridge-eyebrow">Objetivo</p>
             <p class="bridge-title">Dónde quiere llegar</p>
@@ -115,7 +115,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- 5. CREDIBILIDAD — fondo oscuro, texto pendiente de CVs (placeholder) -->
+  <!-- 5. CREDIBILIDAD -->
   <section class="section-dark">
     <div class="container">
       <h2>Por qué Tekorá</h2>
@@ -129,13 +129,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- 6. IMPLEMENTACIÓN — chips QUÉ/CÓMO + tarjetas de escenario -->
+  <!-- 6. IMPLEMENTACIÓN -->
   <section>
-    <div class="container" style="--line-color: var(--costos); --line-soft: var(--costos-soft);">
+    <div class="container" style="--line-color: var(--costos-text); --line-soft: var(--costos-soft);">
       <h2>Implementación en Costos</h2>
       <div class="chip-pair" style="margin-top: 24px;">
         <div class="chip">Qué — el diagnóstico</div>
-        <span class="bridge-arrow">→</span>
+        <span class="flow-arrow">→</span>
         <div class="chip chip-active">Cómo — la implementación</div>
       </div>
 
@@ -176,7 +176,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- 7. FAQ — acordeón -->
+  <!-- 7. FAQ -->
   <section class="section-soft">
     <div class="container">
       <h2>Preguntas frecuentes</h2>
@@ -201,7 +201,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- 8. CTA DE CIERRE — fondo oscuro, botón grande (bookend con Hero) -->
+  <!-- 8. CTA DE CIERRE -->
   <section class="section-dark">
     <div class="container" style="text-align:center;">
       <h2>Deje de asumir supuestos costos y conozca el número real de su negocio.</h2>
