@@ -26,7 +26,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <li> No sabe cuál es el modelo de costeo y su apropiación a productos y servicios. Calcula precios usando sistemas o planillas que nadie ha auditado o actualizado en años.</li>
         <li> Reporta utilidad al final del periodo, pero ignora qué productos están trabajando con margen negativo.</li>
         <li> La información de costos no se actualiza a la velocidad de las ventas, generando decisiones desfasadas.</li>
-<li> Incorpora nuevos productos o servicios, contrata personal, invierte en activos o los retira, extiende la operación a otros lugares y nadie miel el impacto real en los costos para evaluar si se tomaron las decisiones correctas..</li>
+<li> Incorpora nuevos productos o servicios, contrata personal, invierte en activos o los retira, extiende la operación a otros lugares y nadie mide el impacto real en los costos para evaluar si se tomaron las decisiones correctas..</li>
 <li> Fija precios con una estructura de costos que no se ha revisado en el ultimo tiempo.</li>
 
       </ul>
@@ -55,7 +55,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
           <div class="timeline-content">
             <h3>Mapeo de la operación real</h3>
-            <p>Estudiamos como trabajan, sus procesos y cómo su equipo registra y maneja la información de costos, su sistema, para identificar la causa raíz de las desviaciones. (plazo a definir según el tamaño del negocio </p>
+            <p>Estudiamos como trabajan, sus procesos y cómo su equipo registra y maneja la información de costos, su sistema, para identificar la causa raíz de las desviaciones. (plazo a definir según el tamaño del negocio).</p>
           </div>
         </div>
         <div class="timeline-step costos">
@@ -90,7 +90,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
           <div class="timeline-content">
             <p class="text-muted" style="max-width: 60ch; margin-bottom: 24px; margin-top: 8px;">
-              Al terminar, no se lleva una lista de observaciones sueltas — se lleva guía para iniciar un plan de acción.
+              Al terminar, no se lleva una lista de observaciones y recomendaciones sueltas — se lleva guía concreta para iniciar un plan de acción.
             </p>
             <div class="report-frame" style="--line-color: var(--costos-text); --line-soft: var(--costos-soft);">
               <span class="report-frame-label">Informe escrito — documenta todo el diagnóstico</span>
@@ -171,31 +171,63 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- 5. FAQ -->
-  <section>
-    <div class="container">
-      <h2>Preguntas frecuentes</h2>
-      <div class="faq-accordion" style="margin-top: 20px;">
-        <details>
-          <summary>¿Cuánto dura el diagnóstico?</summary>
-          <p class="a">Varía según el tamaño y la complejidad de su operación; se define en la reunión de diagnóstico.</p>
-        </details>
-        <details>
-          <summary>¿Necesito cambiar de sistema o ERP?</summary>
-          <p class="a">No. Se trabaja con la información que ya tiene.</p>
-        </details>
-        <details>
-          <summary>¿Y si el diagnóstico no encuentra nada grave?</summary>
-          <p class="a">Aun así, sale con el mismo informe de hallazgos priorizados. Ninguna empresa es perfecta — siempre hay oportunidades de mejora. Sabrá con certeza en qué situación está la suya, algo que hoy no tiene con precisión.</p>
-        </details>
-        <details>
-          <summary>¿Necesito contratar la Implementación después del diagnóstico?</summary>
-          <p class="a">No es obligatorio. El diagnóstico y el informe le pertenecen sin condición — puede ejecutar los cambios con su propio equipo si lo prefiere. La Implementación existe para cuando prefiere que lo hagamos nosotros, con el mismo criterio del diagnóstico.</p>
-        </details>
-      </div>
-    </div>
-  </section>
+<!-- 5. PREGUNTAS FRECUENTES -->
+<section class="section-soft">
+  <div class="container">
+    <h2>Preguntas frecuentes</h2>
+    <div class="faq-accordion" style="margin-top: 20px;">
 
+      <!-- FAQ 1: PRECIO / PRESUPUESTO -->
+      <details>
+        <summary>¿Cuánto cuesta el diagnóstico de costos?</summary>
+        <p class="a">El presupuesto se ajusta a la escala de su empresa, la cantidad de líneas de productos o servicios y la complejidad operativa. Definimos el alcance exacto y la inversión en la reunión inicial de alineación, asegurando un costo proporcional al margen que busca proteger.</p>
+      </details>
+
+      <!-- FAQ 2: TIEMPO DE EJECUCIÓN -->
+      <details>
+        <summary>¿En cuánto tiempo se entrega el informe?</summary>
+        <p class="a">En general, el proceso toma entre 1 y 2 semanas desde la recepción completa de la información. El plazo final se acuerda en la sesión de alineación según la disponibilidad de los datos de su negocio.</p>
+      </details>
+
+      <!-- FAQ 3: DEDICACIÓN Y TIEMPO DEL CLIENTE (NUEVA) -->
+      <details>
+        <summary>¿Cuánto tiempo debe dedicar mi equipo al proceso?</summary>
+        <p class="a">Limitamos la carga de trabajo al mínimo indispensable para no interrumpir su rutina operativa. Solo requerimos que designe a un <strong>interlocutor único</strong> en su empresa que centralice las solicitudes de información y coordine los accesos puntualizados.</p>
+      </details>
+
+      <!-- FAQ 4: ENTREGABLE / RESULTADOS -->
+      <details>
+        <summary>¿Qué recibe exactamente mi empresa al finalizar?</summary>
+        <p class="a">Recibe un informe ejecutivo con el diagnóstico de su estructura de costos, la evaluación de los procesos del personal involucrado y un plan de acción priorizado. Este documento le muestra con claridad dónde están los desfases y cómo corregirlos.</p>
+      </details>
+
+      <!-- FAQ 5: CONFIDENCIALIDAD Y SEGURIDAD -->
+      <details>
+        <summary>¿Cómo se resguarda la información confidencial de mi empresa?</summary>
+        <p class="a">Antes de revisar cualquier número, firmamos un <strong>Acuerdo de Confidencialidad (NDA)</strong> formal y un <strong>Acuerdo de Nivel de Servicio (SLA)</strong> que garantizan el resguardo absoluto de sus datos, tiempos y entregables.</p>
+      </details>
+
+      <!-- FAQ 6: HALLAZGOS Y RIESGO DE "NO ENCONTRAR NADA" -->
+      <details>
+        <summary>¿Qué ocurre si el diagnóstico no encuentra errores graves?</summary>
+        <p class="a">Obtendrá la confirmación de que sus costos se están calculando con rigor técnico. Aun así, el informe le entregará oportunidades de optimización y la tranquilidad de verificar que sus decisiones actuales se sostienen sobre bases sólidas.</p>
+      </details>
+
+      <!-- FAQ 7: IMPLEMENTACIÓN Y SOPORTE POSTERIOR (NUEVA) -->
+      <details>
+        <summary>¿Qué pasa si decidimos hacer la implementación por nuestra cuenta?</summary>
+        <p class="a">El informe y el plan de acción son de su total propiedad para ejecutarlos con su propio personal. Además, el servicio incluye <strong>horas de soporte posventa</strong> durante un periodo determinado para acompañar a su equipo, resolver dudas y asegurar la correcta aplicación del plan.</p>
+      </details>
+
+      <!-- FAQ 8: CONTINUIDAD Y CAMBIOS FUTUROS (NUEVA DE CONSULTOR) -->
+      <details>
+        <summary>¿El diagnóstico sirve si lanzamos nuevos productos o cambia la operación después?</summary>
+        <p class="a">Sí. El diagnóstico no le entrega una foto fija, sino las bases y criterios para evaluar sus costos. Si su empresa crece o incorpora nuevos productos, el modelo diseñado le permitirá absorber esos cambios sin distorsionar su estructura.</p>
+      </details>
+
+    </div>
+  </div>
+</section>
   <!-- 6. CREDIBILIDAD (Movido al final, antes del CTA) -->
   <section class="section-dark">
     <div class="container">
