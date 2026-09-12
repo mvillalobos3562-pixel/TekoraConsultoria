@@ -10,8 +10,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="hero-fullbleed" style="background-image: url('/inventarios-hero.webp');">
     <div class="container">
       <p class="eyebrow inventarios">Inventarios</p>
-      <h1>Cada discrepancia entre lo que dice el sistema y lo que hay en bodega es una decisión que se toma con datos equivocados.</h1>
-      <p>No vendemos control de inventarios. Ayudamos a que su negocio nunca se quede sin lo que necesita vender, ni sobre-invierta en lo que no rota.</p>
+      <h1 class="h1-long">Cada discrepancia entre lo que dice el sistema y lo que hay en bodega es una decisión de ventas y compras tomada con datos equivocados.</h1>
+      <p>Los recuentos físicos eternos, el capital inmovilizado y los quiebres de stock erosionan la rentabilidad de su negocio. Diseñamos un modelo de inventarios y procesos para sincronizar su stock real con su información, asegurando una operación fluida.</p>
       <div class="cta-group" style="margin-top: 24px;">
         <a href="/agendar" class="btn btn-inventarios">Empezar el diagnóstico</a>
       </div>
@@ -23,17 +23,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="container">
       <h2>Señales de que su inventario ya no refleja la realidad</h2>
       <ul>
-        <li>El conteo físico y el sistema no coinciden, y nadie sabe con certeza por qué.</li>
-        <li>Hay productos que se quedan sin stock mientras otros acumulan capital sin rotar.</li>
-        <li>Las decisiones de reposición se toman por costumbre, no por datos actualizados.</li>
+        <li>El conteo físico y el sistema no coinciden, y nadie sabe con certeza en qué punto del proceso se generan las diferencias.</li>
+        <li>Sufre quiebres de stock que le hacen perder ventas, mientras otros productos se acumulan en bodega inmovilizando su capital.</li>
+        <li>Las compras y la reposición de mercadería se realizan por hábito o intuición, no en función de datos actualizados de rotación.</li>
+        <li>Abre nuevas sucursales, amplía almacenes o incorpora nuevas líneas, y la falta de control en bodegas paraliza los despachos diarios.</li>
+        <li>Invierte demasiado tiempo y horas de su equipo en tomas de inventario eternas que no logran resolver el descontrol de fondo.</li>
       </ul>
     </div>
   </section>
 
-  <!-- 3. EL DIAGNÓSTICO Y EL RESULTADO (Fusión) -->
+  <!-- 3. EL DIAGNÓSTICO Y EL RESULTADO -->
   <section>
     <div class="container">
-      <h2>Del diagnóstico al resultado</h2>
+      <h2>Primero el diagnóstico: entender la realidad de su operación antes de actuar.</h2>
       <div class="timeline" style="margin-top: 32px;">
         <div class="timeline-step inventarios">
           <div class="timeline-marker">
@@ -41,8 +43,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div class="timeline-line"></div>
           </div>
           <div class="timeline-content">
-            <h3>Reunión de diagnóstico</h3>
-            <p>Le mostramos con claridad qué puede costarle no identificar ni resolver esos problemas, y cómo el diagnóstico se lo resuelve. Confirmamos juntos si es el paso correcto para su empresa. En este punto decide si contrata el servicio.</p>
+            <h3>Reunión inicial</h3>
+            <p>Evaluamos en 1 a 2 reuniones (de hasta 2 horas) su situación preliminar, las expectativas que tiene su empresa con el servicio y el riesgo de no actuar. Explicamos con total transparencia si podemos resolver y/o mejorar sus desafíos y el alcance necesario. Entregamos una propuesta comercial. En este punto decide si contrata el servicio.</p>
           </div>
         </div>
         <div class="timeline-step inventarios">
@@ -51,8 +53,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div class="timeline-line"></div>
           </div>
           <div class="timeline-content">
-            <h3>Conocer su operación</h3>
-            <p>No partimos solo de datos: conocer cómo opera, sus procesos y procedimientos, es imprescindible para un diagnóstico preciso. No necesita cambiar de sistema ni implementar nada nuevo para este paso.</p>
+            <h3>Mapeo de la operación real</h3>
+            <p>Estudiamos cómo trabajan, sus procesos de recepción, almacenamiento y despacho, y cómo su equipo maneja la información en bodega para identificar la causa raíz de las diferencias. (plazo a definir según el tamaño del negocio).</p>
           </div>
         </div>
         <div class="timeline-step inventarios">
@@ -61,33 +63,31 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div class="timeline-line"></div>
           </div>
           <div class="timeline-content">
-            <h3>Análisis</h3>
-            <p>Identificamos si su inventario refleja o no la realidad de su operación, y en qué puntos específicos hay que ajustarla para que tenga mejoras medibles.</p>
+            <h3>Análisis del control de inventarios actual</h3>
+            <p>Identificamos si su inventario físico refleja o no la información registrada, y en qué puntos específicos de la cadena hay que ajustar procedimientos para tener mejoras medibles. (tiempo a definir según el volumen de información y bodegas)</p>
           </div>
         </div>
         <div class="timeline-step inventarios">
           <div class="timeline-marker">
             <div class="timeline-num">4</div>
-            <!-- La línea ahora continúa hacia abajo -->
             <div class="timeline-line"></div>
           </div>
           <div class="timeline-content">
-            <h3>Entrega de informe</h3>
-            <p>Presentamos los hallazgos en una reunión, con el orden de prioridad para actuar.</p>
+            <h3>Entrega de resultados del diagnóstico</h3>
+            <p>Presentamos las conclusiones y el inicio de un plan de acción, entregando las recomendaciones ordenadas por nivel de prioridad para actuar. (1 reunión ejecutiva de hasta 2 horas)</p>
           </div>
         </div>
-
+        
         <!-- El Entregable (Conectado visualmente) -->
         <div class="timeline-step inventarios" style="padding-bottom: 0;">
           <div class="timeline-marker">
-            <!-- Flecha direccional -->
             <div style="width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; background: var(--bg-color); z-index: 2; color: var(--inventarios-text); margin-top: 4px;">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
             </div>
           </div>
           <div class="timeline-content">
             <p class="text-muted" style="max-width: 60ch; margin-bottom: 24px; margin-top: 8px;">
-              Al terminar, no se lleva una lista de observaciones sueltas — se lleva un plan claro para actuar.
+              Al terminar, no se lleva una lista de observaciones y recomendaciones sueltas — se lleva una guía concreta para iniciar un plan de acción.
             </p>
             <div class="report-frame" style="--line-color: var(--inventarios-text); --line-soft: var(--inventarios-soft);">
               <span class="report-frame-label">Informe escrito — documenta todo el diagnóstico</span>
@@ -124,7 +124,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <!-- 4. IMPLEMENTACIÓN -->
   <section class="section-soft">
     <div class="container" style="--line-color: var(--inventarios-text); --line-soft: var(--inventarios-soft);">
-      <h2>Implementación en Inventarios</h2>
+      <h2>Implementación y ejecución del plan de acción</h2>
       <div class="chip-pair" style="margin-top: 24px;">
         <div class="chip">Qué — el diagnóstico</div>
         <span class="flow-arrow">→</span>
@@ -132,10 +132,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
 
       <p style="max-width: 62ch;">
-        El diagnóstico le muestra dónde está el problema en su inventario: el QUÉ. La Implementación es donde se resuelve: el CÓMO.
+        El diagnóstico le muestra dónde están las fallas en el control de stock: el QUÉ. La Implementación es un servicio distinto, puede realizarlo con TEKORÁ (Consultoría en operaciones) y acá es donde se resuelve: el CÓMO.
       </p>
       <p class="text-muted" style="max-width: 62ch;">
-        Nuestro informe de diagnóstico es el punto de partida. La Implementación convierte ese plan de acción en el control que su empresa usará mes a mes: un inventario que refleja lo que realmente hay en bodega, no una diferencia que se descubre demasiado tarde.
+        Con el informe de diagnóstico como punto de partida, la Implementación se convierte en un plan de acción con cronograma, actividades y tareas para formalizar los procesos que su empresa usará en bodega: un control que mantiene su stock físico alineado con su información operativa y no una diferencia que se descubre demasiado tarde.
       </p>
 
       <div class="scenario-grid" style="margin-top: 24px;">
@@ -168,49 +168,106 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- 5. FAQ -->
-  <section>
+  <!-- 5. PREGUNTAS FRECUENTES -->
+  <section class="section-soft">
     <div class="container">
       <h2>Preguntas frecuentes</h2>
       <div class="faq-accordion" style="margin-top: 20px;">
+
+        <!-- FAQ 1: PRECIO / PRESUPUESTO -->
         <details>
-          <summary>¿Cuánto dura el diagnóstico?</summary>
-          <p class="a">Varía según el tamaño y la complejidad de su operación; se define en la reunión de diagnóstico.</p>
+          <summary>¿Cuánto cuesta el diagnóstico de inventarios?</summary>
+          <p class="a">El presupuesto se ajusta a la escala de su empresa, la cantidad de bodegas o puntos de venta y la complejidad operativa. Definimos el alcance exacto y la inversión en la reunión inicial de alineación.</p>
         </details>
+
+        <!-- FAQ 2: TIEMPO DE EJECUCIÓN -->
         <details>
-          <summary>¿Necesito cambiar de sistema o ERP?</summary>
-          <p class="a">No. Se trabaja con la información que ya tiene.</p>
+          <summary>¿En cuánto tiempo se entrega el informe?</summary>
+          <p class="a">En general, el proceso toma entre 1 y 2 semanas desde la recepción completa de la información. El plazo final se acuerda en la sesión de alineación según la disponibilidad de los datos de su negocio.</p>
         </details>
+
+        <!-- FAQ 3: DEDICACIÓN Y TIEMPO DEL CLIENTE -->
         <details>
-          <summary>¿Y si el diagnóstico no encuentra grandes diferencias?</summary>
-          <p class="a">Aun así, sale con el mismo informe de hallazgos priorizados. Ninguna empresa es perfecta — siempre hay oportunidades de mejora. Sabrá con certeza en qué situación está la suya, algo que hoy no tiene con precisión.</p>
+          <summary>¿Cuánto tiempo debe dedicar mi equipo al proceso?</summary>
+          <p class="a">Limitamos la carga de trabajo al mínimo indispensable para no interrumpir su rutina operativa. Solo requerimos que designe a un <strong>interlocutor único</strong> en su empresa que centralice las solicitudes de información y coordine los accesos puntualizados.</p>
         </details>
+
+        <!-- FAQ 4: ENTREGABLE / RESULTADOS -->
         <details>
-          <summary>¿Necesito contratar la Implementación después del diagnóstico?</summary>
-          <p class="a">No es obligatorio. El diagnóstico y el informe le pertenecen sin condición — puede ejecutar los cambios con su propio equipo si lo prefiere. La Implementación existe para cuando prefiere que lo hagamos nosotros, con el mismo criterio del diagnóstico.</p>
+          <summary>¿Qué recibe exactamente mi empresa al finalizar?</summary>
+          <p class="a">Recibe un informe ejecutivo con el diagnóstico del estado de sus almacenes, la evaluación de los procesos del personal involucrado y una guía para iniciar un plan de acción priorizado. Este documento le muestra con claridad dónde están las diferencias de stock y cómo corregirlas.</p>
         </details>
+
+        <!-- FAQ 5: CONFIDENCIALIDAD Y SEGURIDAD -->
+        <details>
+          <summary>¿Cómo se resguarda la información confidencial de mi empresa?</summary>
+          <p class="a">Antes de revisar cualquier número o dato de stock, firmamos un <strong>Acuerdo de Confidencialidad (NDA)</strong> formal y un <strong>Acuerdo de Nivel de Servicio (SLA)</strong> que garantizan el resguardo absoluto de sus datos, tiempos y entregables.</p>
+        </details>
+
+        <!-- FAQ 6: HALLAZGOS Y RIESGO DE "NO ENCONTRAR NADA" -->
+        <details>
+          <summary>¿Qué ocurre si el diagnóstico no encuentra diferencias graves?</summary>
+          <p class="a">Obtendrá la confirmación de que su bodega opera con rigor técnico y orden adecuado. Aun así, el informe le entregará oportunidades de optimización y la tranquilidad de verificar que su inventario respalda sus ventas sobre bases sólidas.</p>
+        </details>
+
+        <!-- FAQ 7: IMPLEMENTACIÓN Y SOPORTE POSTERIOR -->
+        <details>
+          <summary>¿Qué pasa si decidimos hacer la implementación por nuestra cuenta?</summary>
+          <p class="a">El informe y el plan de acción son de su total propiedad para ejecutarlos con su propio personal. Además, el servicio incluye <strong>horas de soporte posventa</strong> durante un periodo determinado para acompañar a su equipo, resolver dudas y asegurar la correcta aplicación del plan.</p>
+        </details>
+
+        <!-- FAQ 8: CONTINUIDAD Y CAMBIOS FUTUROS -->
+        <details>
+          <summary>¿El diagnóstico sirve si abrimos más bodegas o incorporamos nuevos productos después?</summary>
+          <p class="a">Sí. El diagnóstico no le entrega una foto fija, sino los criterios y procedimientos para gestionar sus existencias. Si su empresa crece, abre nuevos puntos de venta o suma ítems a su catálogo, el modelo diseñado le permitirá absorber esos cambios sin caer en el descontrol de stock.</p>
+        </details>
+
       </div>
     </div>
   </section>
 
-  <!-- 6. CREDIBILIDAD (Movido al final) -->
+  <!-- 6. CREDIBILIDAD / POR QUÉ TEKORÁ -->
   <section class="section-dark">
     <div class="container">
-      <h2>Por qué Tekorá</h2>
-      <ul style="list-style:none; padding:0; margin-top:20px; display:flex; flex-direction:column; gap:12px;">
-        <li class="text-muted">[Placeholder — trayectoria del fundador, pendiente de CV]</li>
-        <li class="text-muted">[Placeholder — especialización en costos e inventarios, no consultoría genérica]</li>
-        <li class="text-muted">[Placeholder — quién ejecuta el trabajo]</li>
-        <li class="text-muted">[Placeholder — rigor del propio proceso de diagnóstico]</li>
-        <li class="text-muted">[Placeholder — contexto local, Bolivia]</li>
-      </ul>
+      <h2>Por qué TEKORÁ</h2>
+      <p class="text-muted" style="max-width: 62ch; margin: 8px 0 28px;">
+        Criterio técnico de nivel gerencial aplicado directamente a la realidad operativa de su empresa.
+      </p>
+
+      <div class="credits-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
+        
+        <!-- Bloque 1: Experiencia Gerencial -->
+        <div class="credit-card">
+          <h3>20 años en la dirección de operaciones</h3>
+          <p>Liderazgo de nivel gerencial en administración, logística y posventa en empresas nacionales e internacionales, respaldado por docencia universitaria de posgrado.</p>
+        </div>
+
+        <!-- Bloque 2: Especialización vs. Consultoría Genérica -->
+        <div class="credit-card">
+          <h3>Nos metemos a la bodega, no a revisar informes de escritorio</h3>
+          <p>No aplicamos reglas teóricas ni miramos el stock desde un escritorio. Evaluamos la recepción, almacenamiento y despacho en la bodega misma para construir procesos que su equipo sí pueda cumplir.</p>
+        </div>
+
+        <!-- Bloque 3: Ejecución Senior -->
+        <div class="credit-card">
+          <h3>Ejecución directa por ingenieros seniors</h3>
+          <p>Su diagnóstico es realizado y supervisado directamente por profesionales experimentados en ingeniería financiera y sistemas, asegurando rigor en cada dato sin intermediarios ni juniors.</p>
+        </div>
+
+        <!-- Bloque 4: Adaptabilidad al Mercado Local -->
+        <div class="credit-card">
+          <h3>Modelos ajustados a la realidad operativa local</h3>
+          <p>Incorporamos el riesgo de quiebres, la variabilidad en los tiempos de despacho y las dinámicas reales de almacenamiento, diseñando una solución a la medida de las empresas en Bolivia.</p>
+        </div>
+
+      </div>
     </div>
   </section>
 
   <!-- 7. CTA DE CIERRE -->
   <section class="section-dark" style="border-top: 1px solid rgba(255,255,255,0.1);">
     <div class="container" style="text-align:center;">
-      <h2>Antes del próximo pedido a proveedores, sepa con certeza qué tiene realmente en bodega.</h2>
+      <h2>Antes del próximo pedido a proveedores, sepa con claridad qué tiene realmente en bodega.</h2>
       <div class="cta-group" style="justify-content:center; margin-top: 24px;">
         <a href="/agendar" class="btn btn-inventarios btn-large">Empezar el diagnóstico</a>
       </div>
