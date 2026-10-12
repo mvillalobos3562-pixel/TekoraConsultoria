@@ -1,17 +1,22 @@
 ---
+import MetaPixelHead from '../components/MetaPixelHead.astro';
+import MetaPixelNoscript from '../components/MetaPixelNoscript.astro';
 import '../styles/global.css';
 
 export interface Props {
   title: string;
   description: string;
+  line?: 'costos' | 'inventarios';
 }
-const { title, description } = Astro.props;
+const { title, description, line } = Astro.props;
+const pixelContent = line === 'costos' ? 'Costos' : line === 'inventarios' ? 'Inventarios' : null;
 ---
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <MetaPixelHead contentName={pixelContent} contentCategory="Landing campaña" />
   <title>{title} · Prisma Consulting</title>
   <meta name="description" content={description} />
   <!-- Sin index: estas páginas existen solo como destino de campañas pagas -->
@@ -22,6 +27,7 @@ const { title, description } = Astro.props;
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 </head>
 <body>
+  <MetaPixelNoscript />
   <main>
     <div class="container" style="padding-top: 32px;">
       <a href="/" class="logo-lp">
