@@ -171,6 +171,14 @@ const minDate = new Date().toISOString().split('T')[0];
       .then((res) => res.json())
       .then((result) => {
         if (result.ok) {
+          // Meta Pixel: Lead solo con envío confirmado por el servidor y sin activar el campo trampa anti-spam
+          const fbq = (window as any).fbq;
+          if (typeof fbq === 'function' && !data.website) {
+            fbq('track', 'Lead', {
+              content_name: 'Reunión de evaluación',
+              content_category: data.servicio
+            });
+          }
           form.style.display = 'none';
           successBox.style.display = 'block';
         } else {
