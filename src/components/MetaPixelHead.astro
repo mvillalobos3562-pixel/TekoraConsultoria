@@ -1,0 +1,41 @@
+---
+// Código base del píxel de Meta + eventos del sitio. Va dentro de <head>, lo más arriba posible.
+// Eventos: PageView (toda página) · ViewContent (páginas de servicio / landings) · Contact (clic en WhatsApp o correo).
+// El evento Lead se dispara en /agendar solo cuando el servidor confirma el envío.
+import { META_PIXEL_ID } from '../lib/meta';
+
+export interface Props {
+  contentName?: string | null;
+  contentCategory?: string;
+}
+const { contentName = null, contentCategory = 'Servicio' } = Astro.props;
+---
+<script is:inline define:vars={{ pixelId: META_PIXEL_ID, contentName, contentCategory }}>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+
+  fbq('init', pixelId);
+  fbq('track', 'PageView');
+
+  if (contentName) {
+    fbq('track', 'ViewContent', { content_name: contentName, content_category: contentCategory });
+  }
+
+  // Contact: clic en cualquier enlace de WhatsApp o correo (delegado: cubre todas las páginas)
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    var method = href.indexOf('https://wa.me/') === 0 ? 'whatsapp'
+               : href.indexOf('mailto:') === 0 ? 'email' : null;
+    if (method) {
+      fbq('track', 'Contact', { method: method, content_name: location.pathname });
+    }
+  });
+</script>

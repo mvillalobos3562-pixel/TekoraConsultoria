@@ -1,0 +1,5 @@
+---
+// Respaldo del píxel para navegadores sin JavaScript. Va inmediatamente después de <body>.
+import { META_PIXEL_ID } from '../lib/meta';
+---
+<noscript><img height="1" width="1" style="display:none" alt="" src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`} /></noscript>
