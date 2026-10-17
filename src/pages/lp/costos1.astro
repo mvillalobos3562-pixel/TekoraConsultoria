@@ -1,0 +1,32 @@
+---
+import ChecklistLanding from '../../components/ChecklistLanding.astro';
+---
+<ChecklistLanding
+  servicio="costos"
+  servicioNombre="Costos"
+  variante="costos1"
+  graciasHref="/lp/costos1/gracias/"
+  descripcion="Checklist para detectar si el costo de tus productos está desactualizado."
+  titular="Si tus costos no se actualizan con el tipo de cambio, puedes estar perdiendo margen sin saberlo."
+  bajada="Mientras tanto sigues fijando precios con un número que ya no es el real. Este checklist te ayuda a revisarlo en 10 minutos."
+  checklistTitulo="10 puntos para detectar si el costo de tus productos está desactualizado"
+  muestraRotulo="Muestra del checklist · 3 de 10 puntos"
+  muestraPuntos={[
+    'Fecha de la última revisión de costos',
+    'Efecto del tipo de cambio en tus costos',
+    'Margen por producto, no solo el global',
+  ]}
+  sintomas={[
+    '¿Conoces el margen global del mes, pero no el de cada producto?',
+    '¿Te enteras del impacto del tipo de cambio después de que ya pasó?',
+    '¿Tu lista de precios se armó con costos de hace varios meses?',
+  ]}
+  bullets={[
+    { texto: '10 puntos para revisar cómo calculas hoy el costo de cada producto.', beneficio: 'Sabrás si ese número sigue siendo confiable.' },
+    { texto: 'Señales de que el tipo de cambio no está bien reflejado en tus costos.', beneficio: 'Lo detectas antes de ajustar precios.' },
+    { texto: 'Preguntas para comprobar si conoces el margen por producto.', beneficio: 'Ubicas dónde se te puede estar yendo margen.' },
+    { texto: 'Una guía para clasificar lo que encuentres: imprescindible, necesaria u oportunidad de mejora.', beneficio: 'Sabes qué revisar primero.' },
+  ]}
+  ejemplo="Una empresa importadora subió sus precios tras un ajuste cambiario, pero su costo por producto seguía calculado con el tipo de cambio anterior. Al revisarlo, vio que algunos productos se vendían con menos margen del que creía."
+  cierre="Antes de cambiar precios el próximo trimestre, revisa de dónde partes."
+/>

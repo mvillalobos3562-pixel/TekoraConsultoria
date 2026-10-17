@@ -1,0 +1,167 @@
+---
+// Landing de captura con checklist. Estructura fija: cambian solo los textos (props).
+import ChecklistLayout from '../layouts/ChecklistLayout.astro';
+
+export interface Props {
+  servicio: 'costos' | 'inventarios';
+  servicioNombre: string;
+  variante: string;
+  graciasHref: string;
+  descripcion: string;
+  titular: string;
+  bajada: string;
+  checklistTitulo: string;
+  muestraRotulo: string;
+  muestraPuntos: string[];
+  sintomas: string[];
+  sintomasCierre?: string;
+  bullets: { texto: string; beneficio: string }[];
+  contieneCierre?: string;
+  ejemplo: string;
+  cierre: string;
+}
+const {
+  servicio, servicioNombre, variante, graciasHref, descripcion, titular, bajada,
+  checklistTitulo, muestraRotulo, muestraPuntos, sintomas, sintomasCierre,
+  bullets, contieneCierre, ejemplo, cierre,
+} = Astro.props;
+
+// Textos fijos
+const respaldo = 'Experiencia gerencial de 20 años en corporaciones bolivianas e internacionales, en empresas industriales, comerciales, de servicios e ingeniería. Experto en costos y gestión de inventarios, y profesor de posgrado en esas áreas.';
+const privacidad = 'Usaremos tu correo para enviarte el checklist. Puedes darte de baja cuando quieras.';
+const notaMuestra = 'Es solo una muestra. El checklist completo lo recibes al completar el formulario que está al final de esta página.';
+---
+<ChecklistLayout title={servicioNombre} description={descripcion} pixelContent={servicioNombre}>
+  <section>
+    <div class="container">
+      <div class={`hero-block ${servicio}`}>
+        <div class="ck-hero-grid">
+          <div>
+            <p class={`eyebrow ${servicio}`}>{servicioNombre}</p>
+            <h1>{titular}</h1>
+            <p>{bajada}</p>
+          </div>
+          <div>
+            <div class="ck-card" aria-hidden="true">
+              <p class={`eyebrow ${servicio}`} style="margin-bottom: 6px;">{muestraRotulo}</p>
+              <h3 class="ck-muestra-titulo">{checklistTitulo}</h3>
+              <ul class="ck-puntos">
+                {muestraPuntos.map((p) => <li>{p}</li>)}
+              </ul>
+            </div>
+            <p class="text-small">{notaMuestra}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-soft">
+    <div class="container">
+      <h2>¿Te suena alguna de estas?</h2>
+      <ul class="ck-lista">
+        {sintomas.map((s) => <li>{s}</li>)}
+      </ul>
+      {sintomasCierre && <p class="text-muted ck-texto">{sintomasCierre}</p>}
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2>Qué contiene el checklist</h2>
+      <ul class="ck-lista">
+        {bullets.map((b) => <li>{b.texto} <strong>{b.beneficio}</strong></li>)}
+      </ul>
+      {contieneCierre && <p class="text-muted ck-texto">{contieneCierre}</p>}
+    </div>
+  </section>
+
+  <section class="section-soft">
+    <div class="container">
+      <h2>Tekorá Consultoría en operaciones, nace de haber estado del otro lado</h2>
+      <p class="text-muted ck-texto" style="margin-top: 12px;">{respaldo}</p>
+      <p class="text-muted ck-texto"><strong>Ejemplo ilustrativo, no corresponde a un cliente real.</strong> {ejemplo}</p>
+    </div>
+  </section>
+
+  <section id="descarga">
+    <div class="container" style="max-width: 520px;">
+      <h2>{cierre}</h2>
+      <p class="text-muted" style="margin: 12px 0 20px;">Completa tus datos y descarga el checklist de {servicioNombre}.</p>
+      <form id="ck-form" class="ck-card ck-form" data-servicio={servicio} data-variante={variante} data-gracias={graciasHref}>
+        <label for="ck-nombre">Nombre</label>
+        <input id="ck-nombre" name="nombre" type="text" autocomplete="name" required maxlength="200" />
+        <label for="ck-correo">Correo</label>
+        <input id="ck-correo" name="correo" type="email" autocomplete="email" required maxlength="200" />
+        <label for="ck-empresa">Empresa</label>
+        <input id="ck-empresa" name="empresa" type="text" autocomplete="organization" required maxlength="200" />
+        <label for="ck-cargo">Cargo</label>
+        <input id="ck-cargo" name="cargo" type="text" autocomplete="organization-title" required maxlength="200" />
+        <input class="ck-hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <button type="submit" class={`btn btn-${servicio}`} style="width: 100%;">Descargar el checklist de {servicioNombre} →</button>
+        <p class="ck-error" hidden>No pudimos enviar tus datos. Revisa tu conexión e inténtalo de nuevo.</p>
+        <p class="text-small">{privacidad}</p>
+      </form>
+    </div>
+  </section>
+</ChecklistLayout>
+
+<script>
+  const form = document.getElementById('ck-form') as HTMLFormElement | null;
+  if (form) {
+    const boton = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    const aviso = form.querySelector('.ck-error') as HTMLElement;
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      aviso.hidden = true;
+      const textoBoton = boton.textContent;
+      boton.disabled = true;
+      boton.textContent = 'Enviando…';
+      // Origen: parámetros de seguimiento del anuncio (utm_source / utm_campaign / utm_content)
+      const q = new URLSearchParams(location.search);
+      const origen = ['utm_source', 'utm_campaign', 'utm_content'].map((k) => q.get(k)).filter(Boolean).join(' / ') || 'directo';
+      const f = new FormData(form);
+      try {
+        const r = await fetch('/api/checklist', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            nombre: f.get('nombre'),
+            correo: f.get('correo'),
+            empresa: f.get('empresa'),
+            cargo: f.get('cargo'),
+            website: f.get('website'),
+            servicio: form.dataset.servicio,
+            variante: form.dataset.variante,
+            origen,
+          }),
+        });
+        const d = await r.json();
+        if (!r.ok || !d.ok) throw new Error('envio');
+        location.href = (form.dataset.gracias || '/') + (d.id ? '?id=' + encodeURIComponent(d.id) : '');
+      } catch (err) {
+        aviso.hidden = false;
+        boton.disabled = false;
+        boton.textContent = textoBoton;
+      }
+    });
+  }
+</script>
+
+<style>
+  .ck-hero-grid { display: grid; gap: 28px; }
+  @media (min-width: 820px) { .ck-hero-grid { grid-template-columns: 1fr 1fr; align-items: start; } }
+  .ck-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
+  .ck-form { background: var(--bg-soft); }
+  .ck-muestra-titulo { font-size: 17px; line-height: 1.3; margin-bottom: 12px; }
+  .ck-puntos { list-style: none; margin: 0; padding: 0; }
+  .ck-puntos li { display: flex; gap: 10px; align-items: center; font-size: 14px; padding: 8px 0; border-top: 1px solid var(--border); }
+  .ck-puntos li::before { content: ""; width: 14px; height: 14px; border: 1.5px solid var(--text-muted); border-radius: 3px; flex-shrink: 0; }
+  .ck-lista { font-size: 16px; max-width: 60ch; margin-top: 20px; padding-left: 20px; }
+  .ck-lista li { margin-bottom: 10px; }
+  .ck-texto { max-width: 60ch; }
+  label { display: block; font-size: 14px; font-weight: 500; margin-bottom: 6px; }
+  input[type="text"], input[type="email"] { width: 100%; padding: 0.7rem 0.9rem; border: 1px solid var(--border); border-radius: var(--radius); font-family: var(--font-sans); font-size: 15px; margin-bottom: 18px; background: #fff; color: var(--text); }
+  .ck-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+  .ck-error { color: #B42318; font-size: 14px; margin: 12px 0 0; }
+</style>

@@ -1,0 +1,49 @@
+---
+// Layout de las landings de captura con checklist (no modifica LandingLayout).
+// Diferencias: tipografía Lexend Deca, logo de imagen sin enlace (no hay menú ni salidas).
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
+import MetaPixelHead from '../components/MetaPixelHead.astro';
+import MetaPixelNoscript from '../components/MetaPixelNoscript.astro';
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  description: string;
+  pixelContent?: string | null;
+}
+const { title, description, pixelContent = null } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <MetaPixelHead contentName={pixelContent} contentCategory="Landing checklist" />
+  <title>{title} · Tekorá - Consultoría en Operaciones</title>
+  <meta name="description" content={description} />
+  <!-- Sin index: destino de campañas pagas -->
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+  <MetaPixelNoscript />
+  <main>
+    <div class="container" style="padding-top: 32px;">
+      <span class="logo-lp"><Image src={logo} alt="Tekorá Consultoría en Operaciones" height={78} /></span>
+    </div>
+    <slot />
+  </main>
+</body>
+</html>
+
+<style is:global>
+  :root { --font-sans: 'Lexend Deca', system-ui, sans-serif; --font-mono: 'Lexend Deca', system-ui, sans-serif; }
+  h1 { font-size: clamp(28px, 4.4vw, 44px); }
+  main p { font-size: 16px; }
+  .logo-lp { display: block; width: fit-content; margin-left: -11px; }
+  .logo-lp img { height: 78px; width: auto; }
+</style>

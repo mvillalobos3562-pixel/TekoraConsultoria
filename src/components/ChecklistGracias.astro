@@ -1,0 +1,76 @@
+---
+// Página de gracias del checklist. Estructura fija: cambian solo los textos (props).
+import ChecklistLayout from '../layouts/ChecklistLayout.astro';
+
+export interface Props {
+  servicio: 'costos' | 'inventarios';
+  servicioNombre: string;
+  notaDescarga: string;
+  pasos: string[];
+}
+const { servicio, servicioNombre, notaDescarga, pasos } = Astro.props;
+const mensaje = encodeURIComponent(`Hola, descargué el checklist de ${servicioNombre} y quiero conversar.`);
+---
+<ChecklistLayout title={`Gracias · ${servicioNombre}`} description={`Tu checklist de ${servicioNombre}`} pixelContent={null}>
+  <section>
+    <div class="container">
+      <div class={`hero-block ${servicio}`}>
+        <p class={`eyebrow ${servicio}`}>{servicioNombre} · Checklist</p>
+        <h1>Listo, aquí tienes tu checklist.</h1>
+        <p>También te lo enviamos a tu correo. Si no lo ves en unos minutos, revisa la carpeta de spam.</p>
+        <div class="cta-group">
+          <a id="ck-descarga" class={`btn btn-${servicio}`} href="#" style="display: none;" data-contenido={`Checklist ${servicioNombre}`}>Descargar checklist (PDF)</a>
+        </div>
+        <p id="ck-sin-id" style="display: none;">Te enviamos el checklist a tu correo. Si no lo ves en unos minutos, revisa la carpeta de spam.</p>
+        <p class="text-small">{notaDescarga}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-soft">
+    <div class="container">
+      <h2>Cómo usarlo</h2>
+      <ul class="ck-lista">
+        {pasos.map((p) => <li>{p}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2>¿Quieres revisarlo con alguien?</h2>
+      <p class="text-muted ck-texto" style="margin-top: 12px;">Si al terminar quedaron puntos sin respuesta o varios marcados como imprescindibles, conversemos sobre lo que encontraste.</p>
+      <div class="cta-group">
+        <a class="btn btn-ghost" href={`https://wa.me/59174177475?text=${mensaje}`} target="_blank" rel="noopener">Escribir por WhatsApp</a>
+      </div>
+    </div>
+  </section>
+</ChecklistLayout>
+
+<script>
+  const id = new URLSearchParams(location.search).get('id') || '';
+  const valido = /^[0-9a-f-]{36}$/.test(id);
+  const boton = document.getElementById('ck-descarga') as HTMLAnchorElement | null;
+  const sinId = document.getElementById('ck-sin-id') as HTMLElement | null;
+  if (valido && boton) {
+    // La descarga pasa por el Worker, que la registra y entrega el PDF
+    boton.href = '/api/descarga?id=' + id;
+    boton.style.display = 'inline-block';
+    // Evento Lead del pixel: una sola vez por visita
+    try {
+      const clave = 'lead_' + id;
+      if (!sessionStorage.getItem(clave)) {
+        sessionStorage.setItem(clave, '1');
+        (window as any).fbq && (window as any).fbq('track', 'Lead', { content_name: boton.dataset.contenido });
+      }
+    } catch (e) { /* sin almacenamiento: se omite */ }
+  } else if (sinId) {
+    sinId.style.display = 'block';
+  }
+</script>
+
+<style>
+  .ck-lista { font-size: 16px; max-width: 60ch; margin-top: 20px; padding-left: 20px; }
+  .ck-lista li { margin-bottom: 10px; }
+  .ck-texto { max-width: 60ch; }
+</style>
