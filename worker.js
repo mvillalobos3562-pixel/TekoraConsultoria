@@ -2,17 +2,17 @@
 // secreta de Cloudflare con el nombre GOOGLE_WEBHOOK_URL.
 
 // Checklists disponibles. El título debe coincidir con el del checklist real.
-// 'pdf' es la dirección de descarga directa del archivo (hoy en Drive; si pasa al sitio, basta una ruta como '/recursos/archivo.pdf').
+// 'pdf' es la ruta del archivo dentro del sitio (carpeta public del repositorio).
 const CHECKLISTS = {
   costos: {
     servicio: 'Costos',
     titulo: '10 puntos para detectar si el costo de tus productos está desactualizado',
-    pdf: 'https://drive.google.com/uc?export=download&id=PEGAR_ID_CHECKLIST_COSTOS',
+    pdf: '/checklist-costos.pdf',
   },
   inventarios: {
     servicio: 'Inventarios',
     titulo: '10 controles para detectar por qué tu inventario físico no coincide con el sistema',
-    pdf: 'https://drive.google.com/uc?export=download&id=PEGAR_ID_CHECKLIST_INVENTARIOS',
+    pdf: '/checklist-inventarios.pdf',
   },
 };
 
