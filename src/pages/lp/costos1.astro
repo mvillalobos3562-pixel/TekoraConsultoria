@@ -6,27 +6,30 @@ import ChecklistLanding from '../../components/ChecklistLanding.astro';
   servicioNombre="Costos"
   variante="costos1"
   graciasHref="/lp/costos1/gracias/"
-  descripcion="Checklist para detectar si el costo de tus productos está desactualizado."
-  titular="Si tus costos no se actualizan con el tipo de cambio, puedes estar perdiendo margen sin saberlo."
-  bajada="Mientras tanto sigues fijando precios con un número que ya no es el real. Este checklist te ayuda a revisarlo en 10 minutos."
-  checklistTitulo="10 puntos para detectar si el costo de tus productos está desactualizado"
+  descripcion="Checklist de 10 señales para revisar si tus costos reflejan el tipo de cambio y la inflación."
+  titular="Si tus costos se calcularon como si nada fuera a cambiar, puedes estar comprando y fijando precios con un número que ya no es el real."
+  bajada="El tipo de cambio y la inflación mueven tus costos aunque tu sistema no lo muestre. Este checklist te ayuda a revisar en 10 minutos si tu cálculo los refleja."
+  checklistTitulo="Costos calculados como si nada cambiara: 10 señales de riesgo"
   muestraRotulo="Muestra del checklist · 3 de 10 puntos"
   muestraPuntos={[
-    'Fecha de la última revisión de costos',
-    'Efecto del tipo de cambio en tus costos',
-    'Margen por producto, no solo el global',
+    '¿Te ha ocurrido decidir con un costo de hace meses sin actualizarlo por el tipo de cambio?',
+    '¿Has vendido o cotizado a un valor que no alcanzó para reponer, por tipo de cambio o inflación?',
+    '¿Suele pasar que tu presupuesto de costos no incluya los aumentos esperados por inflación?',
   ]}
   sintomas={[
-    '¿Conoces el margen global del mes, pero no el de cada producto?',
-    '¿Te enteras del impacto del tipo de cambio después de que ya pasó?',
-    '¿Tu lista de precios se armó con costos de hace varios meses?',
+    '¿Fijas precios o haces compras con costos que no revisas desde hace meses?',
+    '¿Te enteras de cuánto te afectó el tipo de cambio cuando la compra ya se pagó?',
+    '¿Tu presupuesto de costos se armó a inicio de año y no incluye la inflación que ya ocurrió?',
+    '¿Compras, finanzas y comercial trabajan con supuestos distintos de tipo de cambio?',
   ]}
+  sintomasCierre="Si te reconoces en alguna, es posible que el problema no sea una cifra puntual, sino cómo se calculan y se actualizan tus costos."
   bullets={[
-    { texto: '10 puntos para revisar cómo calculas hoy el costo de cada producto.', beneficio: 'Sabrás si ese número sigue siendo confiable.' },
-    { texto: 'Señales de que el tipo de cambio no está bien reflejado en tus costos.', beneficio: 'Lo detectas antes de ajustar precios.' },
-    { texto: 'Preguntas para comprobar si conoces el margen por producto.', beneficio: 'Ubicas dónde se te puede estar yendo margen.' },
-    { texto: 'Una guía para clasificar lo que encuentres: imprescindible, necesaria u oportunidad de mejora.', beneficio: 'Sabes qué revisar primero.' },
+    { texto: '10 señales para revisar si tus costos incorporan el tipo de cambio y la inflación.', beneficio: 'Ves en qué punto pueden haberse desfasado.' },
+    { texto: 'Preguntas sobre cómo costeas tus compras y proyectas las siguientes.', beneficio: 'Detectas antes de comprar si el costo con el que decides sigue vigente.' },
+    { texto: 'Preguntas sobre si tu presupuesto y tus precios consideran los aumentos esperados.', beneficio: 'Identificas si lo que cobras alcanza para reponer.' },
+    { texto: 'Tres niveles de lectura según tus respuestas, con una acción sugerida en cada uno.', beneficio: 'Sabes qué hacer primero.' },
   ]}
-  ejemplo="Una empresa importadora subió sus precios tras un ajuste cambiario, pero su costo por producto seguía calculado con el tipo de cambio anterior. Al revisarlo, vio que algunos productos se vendían con menos margen del que creía."
-  cierre="Antes de cambiar precios el próximo trimestre, revisa de dónde partes."
+  contieneCierre="Es una lectura inicial: te indica dónde mirar y no reemplaza un análisis completo de tus costos."
+  ejemplo="Una empresa comercial que importa parte de su mercadería mantuvo su lista de precios durante varios meses de alza cambiaria. Al comparar el costo de reposición con el de su sistema, notó que algunos productos se vendían a un valor que ya no alcanzaba para reponerlos."
+  cierre="Antes de tu próxima compra o ajuste de precios, revisa si tus costos reflejan lo que cambió."
 />
