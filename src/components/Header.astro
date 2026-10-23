@@ -13,7 +13,7 @@ const {
   hideContactCTA = false,
   reducedForLine,
   ctaText = 'Contactar',
-  ctaHref = '/agendar',
+  ctaHref = '/contacto',
 } = Astro.props;
 
 const lineLabel = reducedForLine === 'costos'
@@ -25,7 +25,7 @@ const lineLabel = reducedForLine === 'costos'
 <header class={`site-header ${reducedForLine ? 'site-header-line' : ''}`}>
   <div class="container header-inner">
     <a href="/" class="logo">
-      <Image src={reducedForLine ? logoDark : logo} alt="Tekorá Consultoría en Operaciones" height={92} />
+      <Image src={reducedForLine ? logoDark : logo} alt="Arakué Consultoría en Operaciones" height={92} />
     </a>
 
     {lineLabel ? (

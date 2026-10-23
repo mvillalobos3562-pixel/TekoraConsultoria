@@ -13,7 +13,7 @@ export interface Props {
 }
 const { title, description, hideContactCTA = false, reducedForLine } = Astro.props;
 const pixelContent = reducedForLine === 'costos' ? 'Costos' : reducedForLine === 'inventarios' ? 'Inventarios' : null;
-const headerCta = reducedForLine ? 'Empezar el diagnóstico' : 'Contactar';
+const headerCta = 'Contactar';
 ---
 <!DOCTYPE html>
 <html lang="es">
@@ -21,7 +21,7 @@ const headerCta = reducedForLine ? 'Empezar el diagnóstico' : 'Contactar';
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <MetaPixelHead contentName={pixelContent} contentCategory="Servicio" />
-  <title>{title} · Tekorá</title>
+  <title>{title} · Arakué</title>
   <meta name="description" content={description} />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

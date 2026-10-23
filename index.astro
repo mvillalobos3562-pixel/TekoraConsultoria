@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Inicio"
+  description="Arakué — Consultores en Operaciones. Costos e inventarios, con datos, no a ciegas."
+>
+  <!-- 1. HERO (Alto contraste con tipografía fluida/responsiva) -->
+  <section style="background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('/tekora-home2.webp'); background-position: center; background-size: cover; background-repeat: no-repeat; padding: 120px 0;">
+    <div class="container">
+    
+      
+      <h1 class="h1-long" style="color: #ffffff; line-height: 1.1; margin-top: 16px; font-weight: 700; text-shadow: 0 4px 16px rgba(0,0,0,0.6); font-size: clamp(2.5rem, 6vw, 4rem);">
+        ¿Administras costos o inventarios?, entonces esto te interesa.
+      </h1>
+      
+      <p style="max-width: 55ch; line-height: 1.5; color: #ffffff; margin-top: 24px; text-shadow: 0 2px 8px rgba(0,0,0,0.6); font-size: clamp(1.125rem, 3vw, 1.5625rem);">
+        Si la estructura de costos no es correcta y/o tus inventarios fisicos no coinciden con el sistema, las decisiones que tomas te salen caro. Te devolvemos el control con procesos ágiles y simples que se pueden cumplir.
+      </p>
+    </div>
+  </section>
+
+  <!-- 2. PROBLEMAS QUE RESOLVEMOS -->
+  <section class="section-soft">
+    <div class="container">
+      <h2>Resolvemos problemas de gestión de costos e inventarios</h2>
+      <p class="text-muted" style="max-width: 60ch; margin-top: 8px;">
+        Soluciones profesionales, prácticas y con base en sus procesos, nada generico.
+      </p>
+      
+      <div class="card-grid" style="margin-top: 28px;">
+        <div class="card">
+          <p class="eyebrow costos">COSTOS</p>
+          <h3>De asumir supuestos costos a conocer el número real de su operación.</h3>
+          <p class="text-muted" style="margin-top: 12px;">
+            Decidir precios o evaluar márgenes con planillas desfasadas o supuestos teóricos expone a su negocio a fugas silenciosas de dinero. Diseñamos un modelo de costos adaptado a la dinámica real de su empresa y establecemos los procesos para mantenerlo actualizado.Sabrá exactamente cuánto le cuesta cada producto, servicio y contará con criterios claros para fijar precios con margen real.
+          </p>
+          <p style="margin-top: 16px;"><a href="/costos">Conocer servicio de Costos →</a></p>
+        </div>
+        
+        <div class="card">
+          <p class="eyebrow inventarios">INVENTARIOS</p>
+          <h3>De bodegas descuadradas a un inventario que respalde sus ventas.</h3>
+          <p class="text-muted" style="margin-top: 12px;">
+            Las diferencias constantes entre el stock físico y la información paralizan la operación, inmovilizan capital en mercadería o provocan ventas perdidas. Formalizamos los procesos de recepción, despacho y recuento para sincronizar la realidad de su bodega con su información operativa. Reducirá drásticamente los tiempos de toma de inventario y transformará su stock en una herramienta de trabajo confiable.  
+          <p style="margin-top: 16px;"><a href="/inventarios">Conocer servicio de Inventarios →</a></p>
+        </div>
+      </div>
+      
+      <div style="margin-top: 32px;">
+        <a href="/contacto" class="btn btn-neutral">Contactar</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

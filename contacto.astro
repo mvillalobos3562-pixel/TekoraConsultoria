@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Contacto"
+  description="Escríbenos por formulario o WhatsApp. Arakué – Consultoría en Operaciones, Santa Cruz, Bolivia."
+  hideContactCTA={true}
+>
+  <section class="section-soft">
+    <div class="container" style="max-width: 880px;">
+      <p class="eyebrow neutral">CONTACTO</p>
+      <h1>Cuéntanos qué necesitas</h1>
+      <p class="text-muted" style="margin-top: 12px; max-width: 60ch;">
+        Elige la forma que te quede más cómoda. Respondemos en horario laboral.
+      </p>
+
+      <div class="ct-grid">
+        <div class="ct-card">
+          <h2>Escríbenos tu consulta</h2>
+          <p class="text-muted">Cuéntanos qué quieres saber y te respondemos por correo.</p>
+
+          <form id="ct-form" novalidate>
+            <label for="ct-nombre">Nombre</label>
+            <input id="ct-nombre" name="nombre" type="text" autocomplete="name" required maxlength="200" />
+            <label for="ct-correo">Correo</label>
+            <input id="ct-correo" name="correo" type="email" autocomplete="email" required maxlength="200" />
+            <label for="ct-empresa">Empresa</label>
+            <input id="ct-empresa" name="empresa" type="text" autocomplete="organization" required maxlength="200" />
+            <label for="ct-whatsapp">WhatsApp <span class="ct-opcional">(opcional)</span></label>
+            <input id="ct-whatsapp" name="whatsapp" type="tel" autocomplete="tel" inputmode="tel" maxlength="30" />
+            <label for="ct-mensaje">Tu consulta</label>
+            <textarea id="ct-mensaje" name="mensaje" rows="5" required maxlength="2000"></textarea>
+            <input class="ct-hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <button type="submit" class="btn btn-neutral" style="width: 100%;">Enviar consulta</button>
+            <p class="ct-error" hidden>No pudimos enviar tu consulta. Revisa los datos y tu conexión e inténtalo de nuevo.</p>
+          </form>
+
+          <div id="ct-ok" class="ct-ok" hidden>
+            <h3>¡Gracias por escribirnos!</h3>
+            <p>Recibimos tu consulta. Te responderemos por correo en horario laboral.</p>
+          </div>
+        </div>
+
+        <div class="ct-lado">
+          <div class="ct-card">
+            <h2>Escríbenos por WhatsApp</h2>
+            <p class="text-muted">Si prefieres algo más directo, chatea con nosotros. Respondemos en horario laboral.</p>
+            <a href="https://wa.me/59174177475" class="btn btn-neutral" target="_blank" rel="noopener noreferrer" style="margin-top: 16px;">Abrir WhatsApp</a>
+          </div>
+
+          <div class="ct-card">
+            <h2>Nuestros datos</h2>
+            <p class="ct-datos">
+              <strong>Arakué – Consultoría en Operaciones</strong><br />
+              Santa Cruz, Bolivia<br />
+              Calle Tacna No. 77<br />
+              Teléfono: <a href="tel:+59174177475">+591 74177475</a><br />
+              Correo: <a href="mailto:contacto@arakue.com">contacto@arakue.com</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const form = document.getElementById('ct-form') as HTMLFormElement | null;
+  if (form) {
+    const boton = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    const aviso = form.querySelector('.ct-error') as HTMLElement;
+    const ok = document.getElementById('ct-ok') as HTMLElement;
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      aviso.hidden = true;
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      const textoBoton = boton.textContent;
+      boton.disabled = true;
+      boton.textContent = 'Enviando…';
+      const f = new FormData(form);
+      const data = Object.fromEntries(f.entries());
+      try {
+        const r = await fetch('/api/contacto', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        const d = await r.json();
+        if (!r.ok || !d.ok) throw new Error('envio');
+        // Meta Pixel: Lead solo con envío confirmado por el servidor y sin activar el campo trampa
+        const fbq = (window as any).fbq;
+        if (typeof fbq === 'function' && !data.website) {
+          fbq('track', 'Lead', { content_name: 'Consulta por formulario' });
+        }
+        form.hidden = true;
+        ok.hidden = false;
+      } catch (err) {
+        aviso.hidden = false;
+        boton.disabled = false;
+        boton.textContent = textoBoton;
+      }
+    });
+  }
+</script>
+
+<style>
+  .ct-grid { display: grid; gap: 24px; margin-top: 32px; }
+  @media (min-width: 820px) { .ct-grid { grid-template-columns: 1.2fr 1fr; align-items: start; } }
+  .ct-lado { display: grid; gap: 24px; }
+  .ct-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
+  .ct-card h2 { font-size: 20px; margin-bottom: 8px; }
+  .ct-card form { margin-top: 20px; }
+  .ct-datos { line-height: 1.8; font-size: 15px; margin-top: 8px; }
+  .ct-opcional { font-weight: 400; color: var(--text-muted); }
+  label { display: block; font-size: 14px; font-weight: 500; margin-bottom: 6px; }
+  input[type="text"], input[type="email"], input[type="tel"], textarea { width: 100%; padding: 0.7rem 0.9rem; border: 1px solid var(--border); border-radius: var(--radius); font-family: var(--font-sans); font-size: 15px; margin-bottom: 18px; background: #fff; color: var(--text); }
+  textarea { resize: vertical; }
+  .ct-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+  .ct-error { color: #B42318; font-size: 14px; margin: 12px 0 0; }
+  .ct-ok { margin-top: 20px; }
+  .ct-ok h3 { margin-bottom: 8px; }
+</style>

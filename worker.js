@@ -29,8 +29,8 @@ function esc(v) {
   return String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
 
-function limpiar(v) {
-  return String(v ?? '').trim().slice(0, MAX_CAMPO);
+function limpiar(v, max = MAX_CAMPO) {
+  return String(v ?? '').trim().slice(0, max);
 }
 
 async function enviarAGoogle(data, env) {
@@ -148,10 +148,66 @@ async function registrarDescarga(url, request, env, ctx) {
   return Response.redirect(new URL(destino, request.url).toString(), 302);
 }
 
+/* ---------- Consultas (formulario de /contacto) ---------- */
+
+async function sincronizarConsulta(registro, env) {
+  try {
+    const r = await enviarAGoogle({
+      tipo: 'consulta',
+      id: registro.id,
+      timestamp: registro.timestamp,
+      nombre: registro.nombre,
+      correo: registro.correo,
+      empresa: registro.empresa,
+      whatsapp: registro.whatsapp || '',
+      mensaje: registro.mensaje,
+    }, env);
+    registro.synced = true;
+    registro.email = r.email || 'Sin dato';
+    registro.error = '';
+    if (!String(registro.email).startsWith('Enviado')) registro.intentos = (registro.intentos || 0) + 1;
+  } catch (e) {
+    registro.intentos = (registro.intentos || 0) + 1;
+    registro.error = String(e).slice(0, 200);
+  }
+  await env.LEADS_KV.put('con:' + registro.id, JSON.stringify(registro));
+}
+
+async function registrarConsulta(request, env, ctx) {
+  const data = await request.json();
+  if (data.website) return json({ ok: true }); // honeypot
+
+  const lead = {
+    nombre: limpiar(data.nombre),
+    correo: limpiar(data.correo).toLowerCase(),
+    empresa: limpiar(data.empresa),
+    whatsapp: limpiar(data.whatsapp, 30).replace(/[^0-9+()\s-]/g, ''),
+    mensaje: limpiar(data.mensaje, 2000),
+  };
+  for (const campo of ['nombre', 'correo', 'empresa', 'mensaje']) {
+    if (!lead[campo]) return json({ ok: false, error: 'Falta el campo ' + campo }, 400);
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(lead.correo)) return json({ ok: false, error: 'Correo no válido' }, 400);
+
+  const id = crypto.randomUUID();
+  const registro = {
+    ...lead,
+    id,
+    timestamp: new Date().toISOString(),
+    synced: false,
+    email: 'Pendiente',
+    error: '',
+    intentos: 0,
+  };
+  await env.LEADS_KV.put('con:' + id, JSON.stringify(registro));
+  ctx.waitUntil(sincronizarConsulta(registro, env));
+  return json({ ok: true });
+}
+
 /* ---------- Páginas de administración ---------- */
 
 function paginaAdmin(titulo, resumen, encabezados, filas) {
-  const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${esc(titulo)} — Tekorá</title>
+  const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${esc(titulo)} — Arakué</title>
     <style>body{font-family:sans-serif;padding:24px;max-width:1000px;margin:0 auto;}
     table{width:100%;border-collapse:collapse;margin-top:16px;}
     td,th{border:1px solid #ddd;padding:8px;text-align:left;font-size:13px;}
@@ -167,6 +223,7 @@ async function leerRegistros(env, esChecklist) {
   const lista = await env.LEADS_KV.list();
   const registros = [];
   for (const key of lista.keys) {
+    if (key.name.startsWith('con:')) continue;
     if (key.name.startsWith('chk:') !== esChecklist) continue;
     const valor = await env.LEADS_KV.get(key.name);
     if (valor) registros.push(JSON.parse(valor));
@@ -230,6 +287,15 @@ export default {
       }
     }
 
+    // Formulario de consulta (/contacto)
+    if (url.pathname === '/api/contacto' && request.method === 'POST') {
+      try {
+        return await registrarConsulta(request, env, ctx);
+      } catch (error) {
+        return json({ ok: false, error: 'No se pudo procesar el formulario' }, 500);
+      }
+    }
+
     // Descarga rastreada del checklist (la usan el botón de gracias y el email)
     if (url.pathname === '/api/descarga' && request.method === 'GET') {
       return registrarDescarga(url, request, env, ctx);
@@ -278,6 +344,14 @@ export default {
       const raw = await env.LEADS_KV.get(key.name);
       if (!raw) continue;
       const registro = JSON.parse(raw);
+
+      if (key.name.startsWith('con:')) {
+        const emailOk = String(registro.email).startsWith('Enviado');
+        if (!registro.synced || (!emailOk && (registro.intentos || 0) < MAX_INTENTOS_EMAIL)) {
+          await sincronizarConsulta(registro, env);
+        }
+        continue;
+      }
 
       if (key.name.startsWith('chk:')) {
         const emailOk = String(registro.email).startsWith('Enviado');
