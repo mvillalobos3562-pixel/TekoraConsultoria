@@ -96,6 +96,8 @@ const notaMuestra = 'Es solo una muestra. El checklist completo lo recibes al co
         <input id="ck-empresa" name="empresa" type="text" autocomplete="organization" required maxlength="200" />
         <label for="ck-cargo">Cargo</label>
         <input id="ck-cargo" name="cargo" type="text" autocomplete="organization-title" required maxlength="200" />
+        <label for="ck-whatsapp">WhatsApp <span class="ck-opcional">(opcional)</span></label>
+        <input id="ck-whatsapp" name="whatsapp" type="tel" autocomplete="tel" inputmode="tel" maxlength="30" />
         <input class="ck-hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
         <button type="submit" class={`btn btn-${servicio}`} style="width: 100%;">Descargar el checklist de {servicioNombre} →</button>
         <p class="ck-error" hidden>No pudimos enviar tus datos. Revisa tu conexión e inténtalo de nuevo.</p>
@@ -129,6 +131,7 @@ const notaMuestra = 'Es solo una muestra. El checklist completo lo recibes al co
             correo: f.get('correo'),
             empresa: f.get('empresa'),
             cargo: f.get('cargo'),
+            whatsapp: f.get('whatsapp'),
             website: f.get('website'),
             servicio: form.dataset.servicio,
             variante: form.dataset.variante,
@@ -160,7 +163,8 @@ const notaMuestra = 'Es solo una muestra. El checklist completo lo recibes al co
   .ck-lista li { margin-bottom: 10px; }
   .ck-texto { max-width: 60ch; }
   label { display: block; font-size: 14px; font-weight: 500; margin-bottom: 6px; }
-  input[type="text"], input[type="email"] { width: 100%; padding: 0.7rem 0.9rem; border: 1px solid var(--border); border-radius: var(--radius); font-family: var(--font-sans); font-size: 15px; margin-bottom: 18px; background: #fff; color: var(--text); }
+  input[type="text"], input[type="email"], input[type="tel"] { width: 100%; padding: 0.7rem 0.9rem; border: 1px solid var(--border); border-radius: var(--radius); font-family: var(--font-sans); font-size: 15px; margin-bottom: 18px; background: #fff; color: var(--text); }
+  .ck-opcional { font-weight: 400; color: var(--text-muted); }
   .ck-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
   .ck-error { color: #B42318; font-size: 14px; margin: 12px 0 0; }
 </style>
