@@ -6,15 +6,15 @@ import ChecklistLanding from '../../components/ChecklistLanding.astro';
   servicioNombre="Inventarios"
   variante="inventarios1"
   graciasHref="/lp/inventarios1/gracias/"
-  descripcion="Checklist para detectar por qué tu inventario físico no coincide con el sistema."
-  titular="Que el inventario no cuadre es común, pero no es normal. Y puede estar costándote dinero sin que lo notes."
-  bajada="Muchas empresas aceptan las diferencias entre el inventario físico y el sistema como parte del negocio. Mientras tanto, compran por intuición, se quedan sin lo que necesitan vender y cierran la operación varios días para contar. Este checklist te ayuda a revisar en 10 minutos dónde se originan las diferencias."
-  checklistTitulo="10 controles para detectar por qué tu inventario físico no coincide con el sistema"
-  muestraRotulo="Muestra del checklist · 3 de 10 controles"
+  descripcion="Checklist para reconocer 10 señales de que tu inventario no cuadra con el sistema."
+  titular="Si tu inventario no cuadra con el sistema, puedes estar decidiendo con información que no es confiable."
+  bajada="Cuando el almacén y el sistema no dicen lo mismo, puedes vender producto inexistente, dejar de vender producto disponible, comprar a destiempo o descubrir diferencias que nadie sabe explicar. Este checklist te ayuda a reconocer 10 señales y a obtener una lectura inicial de cuánta atención pide tu caso."
+  checklistTitulo="10 señales de que tu inventario no cuadra con el sistema"
+  muestraRotulo="Muestra del checklist · 3 de 10 puntos"
   muestraPuntos={[
-    'Cómo se registra la recepción de mercadería',
-    'Cómo se hacen los ajustes de inventario',
-    'Qué se cierra y cuánto dura la toma física',
+    '¿Te ha pasado que el sistema mostraba stock y al despachar no estaba en el almacén?',
+    '¿Compraste de más o dejaste de comprar un producto por confiar en el stock del sistema?',
+    '¿Antes de confirmar un pedido, tu equipo va a verificar a mano si el producto está?',
   ]}
   sintomas={[
     '¿Cuando el sistema dice que hay stock, igual vas a comprobarlo al almacén?',
@@ -24,10 +24,22 @@ import ChecklistLanding from '../../components/ChecklistLanding.astro';
   ]}
   sintomasCierre="Si respondiste que sí a alguna, es posible que el origen no esté en el sistema, sino en cómo entra, se mueve y sale la mercadería."
   bullets={[
-    { texto: '10 controles sobre cómo entra, se almacena y sale la mercadería.', beneficio: 'Ubicas en qué punto del proceso se originan las diferencias.' },
-    { texto: 'Señales de que los ajustes de inventario están tapando el problema en lugar de resolverlo.', beneficio: 'Distingues entre corregir una cifra y corregir su causa.' },
-    { texto: 'Preguntas para revisar cómo haces la toma física y cuánto te cuesta.', beneficio: 'Verificas si cerrar varios días para contar es necesario.' },
-    { texto: 'Una guía para clasificar lo que encuentres: imprescindible, necesaria u oportunidad de mejora.', beneficio: 'Sabes qué atender primero.' },
+    {
+      texto: '10 señales sobre cómo entra, se almacena y sale la mercadería.',
+      beneficio: 'Ubicas en qué punto pueden originarse las diferencias.',
+    },
+    {
+      texto: 'Preguntas sobre ventas, compras y reportes que ya no generan confianza.',
+      beneficio: 'Detectas si el problema ya está afectando decisiones.',
+    },
+    {
+      texto: 'Preguntas sobre la toma física y las diferencias posteriores.',
+      beneficio: 'Distingues entre corregir una cifra y revisar su causa.',
+    },
+    {
+      texto: 'Una guía para clasificar tu resultado: bajo riesgo, atención o riesgo alto.',
+      beneficio: 'Sabes qué tan urgente es revisar tu caso.',
+    },
   ]}
   contieneCierre="No necesitas cambiar de sistema para usarlo: se enfoca en los procesos que alimentan el sistema que ya tienes."
   ejemplo="Una empresa comercial con varias sucursales ajustaba su inventario después de cada conteo, pero las diferencias volvían a aparecer. Al revisar cómo se registraban las recepciones y las salidas, vio que el origen estaba en el proceso y no en el sistema."
